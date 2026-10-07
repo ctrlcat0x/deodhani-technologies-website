@@ -1,0 +1,137 @@
+export const company = {
+  name: "Deodhani Technologies",
+  email: "info@deodhanitechnologies.com",
+  hours: "Monday–Saturday, 9:00 am–6:00 pm",
+  contactUrl: "https://www.deodhanitechnologies.com/Home/Contact.html",
+  aboutUrl: "https://www.deodhanitechnologies.com/Company/Aboutus.html",
+  // Add the confirmed international number, including country code, without spaces or +.
+  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
+}
+export const services = [
+  {
+    id: "image",
+    code: "IMG_CAPTURE",
+    label: "Image",
+    title: "Give every image a meaning.",
+    description:
+      "Turn visual data into structured training material. From object boundaries to scene labels, image annotation helps your models understand what they see.",
+    image: "camera",
+    alt: "Camera used for collecting visual data",
+    tags: [
+      "Object detection",
+      "Segmentation",
+      "Image classification",
+      "Keypoint labeling",
+    ],
+    workflow: ["Brief", "Collect", "Label", "Review", "Deliver"],
+    url: "https://www.deodhanitechnologies.com/Services/ImageAnnotation.html",
+  },
+  {
+    id: "video",
+    code: "VID_STREAM",
+    label: "Video",
+    title: "Understand the world in motion.",
+    description:
+      "Capture real-world activity and organize it frame by frame. Build a dataset around the scenes, objects, and actions that matter to your application.",
+    image: "video",
+    alt: "Video production and camera equipment",
+    tags: [
+      "Frame annotation",
+      "Object tracking",
+      "Action labeling",
+      "Scene classification",
+    ],
+    workflow: ["Brief", "Capture", "Annotate", "Review", "Deliver"],
+    url: "https://www.deodhanitechnologies.com/Services/DataCollection.html",
+  },
+  {
+    id: "speech",
+    code: "VOICE_TRACK",
+    label: "Speech",
+    title: "Make spoken language usable.",
+    description:
+      "Transform recordings into text your team can work with. Transcription connects conversations, interviews, and other audio to language and speech applications.",
+    image: "voice",
+    alt: "Microphone for speech recording",
+    tags: [
+      "Audio transcription",
+      "Speaker labeling",
+      "Speech collection",
+      "Audio segmentation",
+    ],
+    workflow: ["Brief", "Record", "Transcribe", "Review", "Deliver"],
+    url: "https://www.deodhanitechnologies.com/Services/Transcription.html",
+  },
+  {
+    id: "text",
+    code: "TXT_CORPUS",
+    label: "Text",
+    title: "Bring context to every word.",
+    description:
+      "Organize unstructured language into meaningful labels. Text annotation helps identify entities, intent, and sentiment across documents and conversations.",
+    image: "text",
+    alt: "Handwritten text and document preparation",
+    tags: [
+      "Entity labeling",
+      "Intent classification",
+      "Sentiment annotation",
+      "Document structure",
+    ],
+    workflow: ["Brief", "Prepare", "Annotate", "Review", "Deliver"],
+    url: "https://www.deodhanitechnologies.com/Services/TextAnnotation.html",
+  },
+  {
+    id: "collection",
+    code: "FIELD_OP",
+    label: "Collection",
+    title: "Data starts in the real world.",
+    description:
+      "Source the images, speech, text, and video your project needs. Define your requirements with our team and plan a collection around your use case.",
+    image: "field",
+    alt: "Open agricultural fields for real-world data collection",
+    tags: [
+      "Image collection",
+      "Video capture",
+      "Speech recordings",
+      "Text datasets",
+    ],
+    workflow: ["Scope", "Plan", "Collect", "Review", "Deliver"],
+    url: "https://www.deodhanitechnologies.com/Services/DataCollection.html",
+  },
+  {
+    id: "language",
+    code: "LANG_SET",
+    label: "Language",
+    title: "Connect across languages.",
+    description:
+      "Make your content accessible to new audiences with translation and interpretation. Bring language expertise into the way you prepare and understand your data.",
+    image: "language",
+    alt: "Team collaborating across language communities",
+    tags: [
+      "Translation",
+      "Interpretation",
+      "Multilingual text",
+      "Language review",
+    ],
+    workflow: ["Brief", "Prepare", "Translate", "Review", "Deliver"],
+    url: "https://www.deodhanitechnologies.com/Services/Datasets.html",
+  },
+  {
+    id: "evaluation",
+    code: "RLHF_EVAL",
+    label: "Evaluation",
+    title: "Put human judgment to work.",
+    description:
+      "Evaluate content with the context that automated systems can miss. Define the quality criteria for your project and work with our team to review your material.",
+    image: "expert",
+    alt: "Analytics dashboard for reviewing data quality",
+    tags: [
+      "Content evaluation",
+      "Quality review",
+      "Relevance labeling",
+      "Human feedback",
+    ],
+    workflow: ["Define", "Prepare", "Evaluate", "Review", "Deliver"],
+    url: "https://www.deodhanitechnologies.com/Services/ContentEvaluation.html",
+  },
+]

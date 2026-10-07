@@ -1,0 +1,85 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+:root {
+  --background: #fff;
+  --foreground: #12294d;
+  --primary: #3c82c2;
+  --primary-foreground: #fff;
+  --secondary: #eff6fc;
+  --secondary-foreground: #12294d;
+  --muted: #f1f6fb;
+  --muted-foreground: #62758b;
+  --accent: #eaf3fb;
+  --accent-foreground: #12294d;
+  --card: #fff;
+  --card-foreground: #12294d;
+  --popover: #fff;
+  --popover-foreground: #12294d;
+  --border: #dbe5f0;
+  --input: #dbe5f0;
+  --ring: #3c82c2;
+  --destructive: #c63838;
+  --radius: 8px;
+  --whatsapp: #128c4b;
+  --whatsapp-foreground: #fff;
+  --font-sans: var(--font-inter);
+  --footer: #12294d;
+  --footer-foreground: #fff;
+  --footer-muted: #b3c7df;
+  --footer-accent: #a6ceef;
+  --footer-link: #e5edf8;
+}
+@theme inline {
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+  --color-footer: var(--footer);
+  --color-footer-foreground: var(--footer-foreground);
+  --color-footer-muted: var(--footer-muted);
+  --color-footer-accent: var(--footer-accent);
+  --color-footer-link: var(--footer-link);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply scroll-pt-30 scroll-smooth motion-reduce:scroll-auto max-[700px]:scroll-pt-25;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+  a {
+    @apply focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring;
+  }
+  button:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  ::selection {
+    @apply bg-accent;
+  }
+}
