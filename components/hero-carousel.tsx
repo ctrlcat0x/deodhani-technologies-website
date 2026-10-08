@@ -26,7 +26,7 @@ export function HeroCarousel({
 
   return (
     <div
-      className="relative h-[420px] w-full overflow-hidden rounded-2xl border border-border bg-foreground shadow-xl shadow-primary/10 sm:h-[520px] lg:h-[560px]"
+      className="relative mx-auto aspect-9/14 w-full max-w-[360px] overflow-hidden rounded-2xl border border-border bg-foreground shadow-xl shadow-primary/10 sm:max-w-[400px]"
       role="region"
       aria-roledescription="carousel"
       aria-label="Data annotation examples"
@@ -56,7 +56,7 @@ export function HeroCarousel({
             fill
             loading="eager"
             className="object-cover"
-            sizes="(min-width: 1660px) 680px, (min-width: 1024px) 45vw, 100vw"
+            sizes="(min-width: 640px) 400px, (max-width: 399px) calc(100vw - 40px), 360px"
             unoptimized={images[index].src.endsWith(".svg")}
           />
         </motion.div>
