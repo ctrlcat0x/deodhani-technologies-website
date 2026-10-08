@@ -84,6 +84,15 @@ export function HeroCarousel({
           </button>
         ))}
       </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-3 z-10 text-sky-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)] sm:inset-4"
+      >
+        <span className="absolute top-0 left-0 size-5 border-t border-l" />
+        <span className="absolute top-0 right-0 size-5 border-t border-r" />
+        <span className="absolute bottom-0 left-0 size-5 border-b border-l" />
+        <span className="absolute right-0 bottom-0 size-5 border-r border-b" />
+      </div>
     </div>
   )
 }
