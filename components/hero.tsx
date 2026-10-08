@@ -1,10 +1,8 @@
 import { MarqueeEntrance } from "@/components/marquee-entrance"
 import { TextReveal } from "@/components/text-reveal"
-import Image from "next/image"
+import { HeroCarousel } from "@/components/hero-carousel"
 import { IconArrowUpRight } from "@tabler/icons-react"
 import { buttonVariants } from "@/components/ui/button"
-import { InfiniteSlider } from "@/components/ui/infinite-slider"
-import { cn } from "@/lib/utils"
 const samples = [
   {
     src: "/images/hero img (1).png",
@@ -49,23 +47,28 @@ const samples = [
 ]
 export function Hero() {
   return (
-    <section className="w-full" aria-labelledby="hero-title">
-      <div className="px-6 pt-[70px] pb-[46px] text-center max-[850px]:pt-[52px] max-[700px]:px-5 max-[700px]:pt-11 max-[700px]:pb-9 min-[1600px]:pt-[85px]">
-        <TextReveal as="h1"
+    <section
+      className="mx-auto grid w-full max-w-[1660px] items-center gap-12 px-5 py-12 sm:px-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:px-16 lg:py-20"
+      aria-labelledby="hero-title"
+    >
+      <div className="text-left">
+        <TextReveal
+          as="h1"
           id="hero-title"
-          className="font-mono text-[clamp(34px,4.4vw,66px)] leading-[1.16] font-normal tracking-[-3.4px] text-balance max-[850px]:tracking-[-2px] max-[700px]:text-[clamp(26px,6vw,42px)] max-[700px]:leading-[1.25] max-[700px]:tracking-[-1.5px]"
+          className="max-w-[760px] font-mono text-[clamp(34px,3.6vw,60px)] leading-[1.12] font-normal tracking-[-2px] text-balance sm:tracking-[-2.8px]"
         >
           REAL HUMAN DATA FOR
           <br />
           AI INFRASTRUCTURE.
         </TextReveal>
-        <TextReveal as="p" className="mx-auto mt-[26px] mb-7 max-w-[650px] text-sm leading-[1.8] text-muted-foreground max-[700px]:mt-5 max-[700px]:mb-6 max-[700px]:max-w-[370px] max-[700px]:text-xs">
+        <TextReveal
+          as="p"
+          className="mt-7 mb-8 max-w-[490px] text-sm leading-[1.8] text-muted-foreground sm:text-base"
+        >
           Intelligence starts with understanding. We turn images, text, voice,
-          and
-          <br className="max-[700px]:hidden" /> documents into the high-quality
-          data your AI needs to perform.
+          and documents into the high-quality data your AI needs to perform.
         </TextReveal>
-        <div className="flex justify-center gap-3">
+        <div className="flex flex-wrap gap-3">
           <a href="#data-products" className={buttonVariants({ size: "cta" })}>
             Explore our data
             <IconArrowUpRight data-icon="inline-end" aria-hidden="true" />
@@ -80,32 +83,7 @@ export function Hero() {
         </div>
       </div>
       <MarqueeEntrance>
-      <InfiniteSlider className="pt-3" gap={18} speed={45} speedOnHover={0}>
-        {samples.map((sample) => (
-          <div
-            className={cn(
-              "relative shrink-0 overflow-hidden rounded-xl bg-foreground",
-              sample.landscape
-                ? "aspect-3/2 w-[770px] max-[700px]:w-[525px]"
-                : "aspect-9/14 w-[330px] max-[700px]:w-[225px]"
-            )}
-            key={sample.src}
-          >
-            <Image
-              src={sample.src}
-              alt={sample.alt}
-              fill
-              className="object-cover"
-              sizes={
-                sample.landscape
-                  ? "(max-width: 700px) 525px, 770px"
-                  : "(max-width: 700px) 225px, 330px"
-              }
-              unoptimized={sample.src.endsWith(".svg")}
-            />
-          </div>
-        ))}
-      </InfiniteSlider>
+        <HeroCarousel images={samples} />
       </MarqueeEntrance>
     </section>
   )
