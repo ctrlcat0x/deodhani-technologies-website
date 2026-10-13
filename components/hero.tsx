@@ -97,9 +97,9 @@ export function Hero() {
           </span>
         </TextReveal>
         <TextReveal as="p" delay={0.2} className="hero-description">
-          Models learn from data. Great data starts with people.
-          <br className="hidden sm:block" /> Annotation, collection, and
-          evaluation. Built around what your AI needs to learn.
+          Providing data to train extraordinary AI.
+          <br className="hidden sm:block" /> We collect, label, and review
+          images, speech, text, and documents.
         </TextReveal>
         <TextReveal as="div" delay={0.3} className="hero-actions">
           <Link

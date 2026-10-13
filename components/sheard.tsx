@@ -1,5 +1,6 @@
 import type React from "react"
 import { cn } from "@/lib/utils"
+import { publicPageHref } from "@/lib/public-pages"
 export type LinkItemType = {
   label: string
   href: string
@@ -12,6 +13,7 @@ export function LinkItem({
   icon,
   className,
   href,
+  onClick,
   ...props
 }: React.ComponentProps<"a"> & LinkItemType) {
   return (
@@ -20,8 +22,12 @@ export function LinkItem({
         "flex items-center gap-3 rounded-md p-3.5 transition-colors duration-200 hover:bg-muted motion-reduce:transition-none max-[700px]:px-1.5 max-[700px]:py-3",
         className
       )}
-      href={href}
       {...props}
+      href={publicPageHref(href)}
+      role="link"
+      aria-disabled={!publicPageHref(href) || undefined}
+      tabIndex={publicPageHref(href) ? props.tabIndex : -1}
+      onClick={publicPageHref(href) ? onClick : undefined}
     >
       <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-accent text-primary [&_svg]:size-5">
         {icon}

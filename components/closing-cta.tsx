@@ -14,11 +14,11 @@ export function ClosingCta() {
     >
       <div className="closing-copy">
         <TextReveal as="p" className="text-sm text-muted-foreground">
-          Your next breakthrough starts here.
+          Have a data project?
         </TextReveal>
         <TextReveal as="h2" id="closing-cta-title" className="particle-heading">
           <ParticleText
-            text="Better data. Better AI."
+            text="Talk to our team"
             fontSize="clamp(32px, 5.7vw, 82px)"
             fontWeight={650}
             color="#12294d"
@@ -35,9 +35,9 @@ export function ClosingCta() {
           delay={0.12}
           className="mx-auto mb-8 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base"
         >
-          Tell us where your model gets stuck.
+          Tell us what data you need.
           <br />
-          We’ll work through the data with you.
+          We’ll help you plan the next steps.
         </TextReveal>
         <TextReveal as="div" delay={0.22}>
           <a
