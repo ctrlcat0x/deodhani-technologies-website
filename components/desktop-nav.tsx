@@ -6,7 +6,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-import Link from "next/link"
+import { publicPageHref } from "@/lib/public-pages"
 import { companyLinks, serviceLinks } from "@/components/nav-links"
 import { LinkItem } from "@/components/sheard"
 export function DesktopNav() {
@@ -35,7 +35,14 @@ export function DesktopNav() {
           <NavigationMenuItem key={href}>
             <NavigationMenuLink
               className="h-9 px-4 text-[13px] font-normal whitespace-nowrap max-[1100px]:px-2.5 max-[1100px]:text-xs"
-              render={<Link href={href} />}
+              render={
+                <a
+                  href={publicPageHref(href)}
+                  aria-disabled={!publicPageHref(href) || undefined}
+                  role="link"
+                  tabIndex={-1}
+                />
+              }
             >
               {label}
             </NavigationMenuLink>

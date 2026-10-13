@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { publicPageHref } from "@/lib/public-pages"
 import {
   IconArrowUpRight,
   IconPlus,
@@ -11,34 +12,34 @@ import { TextReveal } from "@/components/text-reveal"
 const phases = [
   {
     title: "Define",
-    line: "A clear brief. A better starting point.",
+    line: "Agree on what you need.",
     text: "Start with what your model needs to learn. Together, we define the data, label taxonomy, edge cases, and delivery format before the work begins.",
   },
   {
     title: "Collect",
-    line: "Real people. Real-world context.",
+    line: "Collect the right data.",
     text: "Source images, video, speech, and text around your use case. Agree on the languages, environments, and collection requirements that make your dataset relevant.",
   },
   {
     title: "Annotate",
-    line: "Give every example a meaning.",
+    line: "Label each example.",
     text: "Turn raw inputs into useful training examples. Our teams work from shared guidelines, with calibration samples to keep interpretation consistent.",
   },
   {
     title: "Review",
-    line: "The difficult examples deserve a second look.",
+    line: "Check and correct the work.",
     text: "Check labels against the brief, resolve disagreements, and feed what we learn back into the guidelines. Quality is part of the workflow from the start.",
   },
   {
     title: "Deliver",
-    line: "Ready for your next step.",
+    line: "Send data in your format.",
     text: "Receive structured data in the agreed format. Review the batch with our team, close open questions, and plan the next iteration around your model’s needs.",
   },
 ]
 
 const offerings = [
   {
-    title: "Help AI see.",
+    title: "Image and video data",
     image: "/images/deodhani/field-collection.webp",
     alt: "Illustration of a field researcher capturing market produce with blue annotation outlines",
     text: "From a basket at a market to a detail in a scan. Labels that turn pixels into context.",
@@ -48,7 +49,7 @@ const offerings = [
     ],
   },
   {
-    title: "Help AI listen.",
+    title: "Speech and language data",
     image: "/images/deodhani/speech-collection.webp",
     alt: "Illustration of an Assamese woman recording speech on her phone with an audio waveform",
     text: "Every voice carries an accent, an intent, a meaning. Bring that understanding into your data.",
@@ -58,7 +59,7 @@ const offerings = [
     ],
   },
   {
-    title: "Help AI understand.",
+    title: "Text and document data",
     image: "/images/deodhani/annotation-workspace.webp",
     alt: "Illustration of an analyst reviewing document annotations in a bright workspace",
     text: "A document is more than text. A response is more than words. Make the meaning usable.",
@@ -72,15 +73,15 @@ const offerings = [
 
 const checks = [
   {
-    title: "Calibrate before scaling",
+    title: "Start with a sample",
     text: "Align on a sample. Find ambiguous labels early, while they are still easy to fix.",
   },
   {
-    title: "Review against the brief",
+    title: "Check your requirements",
     text: "Check the work against your taxonomy and agreed acceptance criteria.",
   },
   {
-    title: "Resolve the edge cases",
+    title: "Review unclear examples",
     text: "Bring disagreements back to a person. Record the decision so the next example is clearer.",
   },
   {
@@ -102,16 +103,15 @@ export function HomeSections() {
             The way we work
           </TextReveal>
           <TextReveal as="h2" id="method-title" className="home-heading">
-            Good data doesn’t <br />
-            happen by chance.
+            What we do
           </TextReveal>
           <TextReveal as="p" delay={0.12} className="home-lead">
-            Five steps. One connected workflow. From the first conversation to
-            the data your team puts to work.
+            We collect, label, check, and deliver data for AI training. Here’s
+            how we work with your team.
           </TextReveal>
           <TextReveal as="div" delay={0.2}>
             <a href="#method-steps" className="home-text-link">
-              Explore the method <IconArrowRight aria-hidden="true" />
+              See our process <IconArrowRight aria-hidden="true" />
             </a>
           </TextReveal>
           <TextReveal
@@ -168,16 +168,15 @@ export function HomeSections() {
         <div className="expertise-intro">
           <div>
             <TextReveal as="p" className="home-label">
-              Human expertise, across every format
+              Data for AI training
             </TextReveal>
             <TextReveal as="h2" id="expertise-title" className="home-heading">
-              The world isn’t one data type. <br />
-              Neither are we.
+              Our services
             </TextReveal>
           </div>
           <TextReveal as="p" delay={0.15} className="home-lead">
-            Vision. Language. Documents. Human judgment where your model needs
-            it.
+            Data collection, annotation, and review for images, speech, text,
+            and documents.
           </TextReveal>
         </div>
         <div className="expertise-grid">
@@ -203,10 +202,15 @@ export function HomeSections() {
               <ul>
                 {offering.links.map(([label, href]) => (
                   <li key={href}>
-                    <Link href={href}>
+                    <a
+                      href={publicPageHref(href)}
+                      role="link"
+                      aria-disabled={!publicPageHref(href) || undefined}
+                      tabIndex={-1}
+                    >
                       {label}
                       <IconArrowUpRight aria-hidden="true" />
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -223,15 +227,14 @@ export function HomeSections() {
         <div className="home-section quality-section">
           <div className="quality-copy">
             <TextReveal as="p" className="home-label">
-              Quality is a process
+              Data review
             </TextReveal>
             <TextReveal as="h2" id="quality-title" className="home-heading">
-              More than a label. <br />A reason to trust it.
+              How we check quality
             </TextReveal>
             <TextReveal as="p" delay={0.12} className="home-lead">
-              A dataset can look complete and still miss the point. We make room
-              for questions, review, and the human judgment that brings an
-              example into focus.
+              We check the data against your requirements, correct errors, and
+              review unclear examples with your team.
             </TextReveal>
             <TextReveal as="div" delay={0.2}>
               <Link href="/contact#inquiry" className="home-text-link">
@@ -286,23 +289,22 @@ export function HomeSections() {
         </TextReveal>
         <div>
           <TextReveal as="p" className="home-label">
-            People make the difference
+            Careers and vendor opportunities
           </TextReveal>
           <TextReveal as="h2" id="people-title" className="home-heading">
-            Your perspective <br />
-            belongs in AI.
+            Work with us
           </TextReveal>
           <TextReveal as="p" delay={0.12} className="home-lead">
-            Language skills. Domain knowledge. A sharp eye for detail. Bring
-            what you know to the work behind intelligent systems.
+            Use your language skills and experience to help prepare AI training
+            data. Explore roles or join us as a vendor.
           </TextReveal>
           <TextReveal as="div" delay={0.2} className="people-links">
-            <Link href="/careers" className="home-text-link">
+            <a role="link" aria-disabled="true" className="home-text-link">
               Explore careers <IconArrowUpRight aria-hidden="true" />
-            </Link>
-            <Link href="/become-a-vendor" className="home-text-link">
+            </a>
+            <a role="link" aria-disabled="true" className="home-text-link">
               Join our vendor network <IconArrowUpRight aria-hidden="true" />
-            </Link>
+            </a>
           </TextReveal>
         </div>
       </section>

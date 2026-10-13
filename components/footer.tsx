@@ -1,6 +1,7 @@
 import { TextReveal } from "@/components/text-reveal"
 import { company } from "@/lib/company"
 import Link from "next/link"
+import { publicPageHref } from "@/lib/public-pages"
 import { IconArrowUpRight, IconArrowUp } from "@tabler/icons-react"
 import { Logo } from "@/components/logo"
 import { buttonVariants } from "@/components/ui/button"
@@ -76,7 +77,10 @@ export function Footer() {
               </TextReveal>
               {group.links.map(([label, href]) => (
                 <a
-                  href={href}
+                  href={publicPageHref(href)}
+                  role="link"
+                  aria-disabled={!publicPageHref(href) || undefined}
+                  tabIndex={publicPageHref(href) ? undefined : -1}
                   key={label}
                   className="text-sm leading-normal text-footer-link transition-colors hover:text-footer-accent hover:underline hover:underline-offset-4 motion-reduce:transition-none max-[700px]:text-xs"
                 >

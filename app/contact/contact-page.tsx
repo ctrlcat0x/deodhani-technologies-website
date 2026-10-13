@@ -104,11 +104,11 @@ export default function ContactPage() {
                 as="p"
                 className="mt-3 text-sm leading-relaxed text-muted-foreground"
               >
-                Explore opportunities to work with Deodhani. For applications,
-                visit our careers page.
+                Interested in working with Deodhani? Get in touch with our team.
               </TextReveal>
               <a
-                href="/careers"
+                role="link"
+                aria-disabled="true"
                 className={buttonVariants({
                   variant: "outline",
                   size: "lg",
@@ -119,7 +119,8 @@ export default function ContactPage() {
                 <IconArrowUpRight aria-hidden="true" />
               </a>
               <a
-                href="/become-a-vendor"
+                role="link"
+                aria-disabled="true"
                 className="mt-5 block text-sm text-primary underline underline-offset-4"
               >
                 Join our vendor network
