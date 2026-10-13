@@ -1,11 +1,12 @@
 export const company = {
   name: "Deodhani Technologies",
   email: "info@deodhanitechnologies.com",
-  hours: "Monday–Saturday, 9:00 am–6:00 pm",
+  phone: "+91 90410 41987",
+  address:
+    "House No. 53, Hawaipur, P.O. Hawaipur, West, Guwahati, Assam 782435",
   contactUrl: "/contact",
   aboutUrl: "/about",
-  // Add the confirmed international number, including country code, without spaces or +.
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
+  whatsappNumber: "919041041987",
 }
 export const services = [
   {

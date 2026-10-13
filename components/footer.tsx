@@ -2,7 +2,15 @@ import { TextReveal } from "@/components/text-reveal"
 import { company } from "@/lib/company"
 import Link from "next/link"
 import { publicPageHref } from "@/lib/public-pages"
-import { IconArrowUpRight, IconArrowUp } from "@tabler/icons-react"
+import {
+  IconArrowUpRight,
+  IconArrowUp,
+  IconBrandLinkedin,
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconBrandX,
+  IconBrandYoutube,
+} from "@tabler/icons-react"
 import { Logo } from "@/components/logo"
 import { buttonVariants } from "@/components/ui/button"
 const groups = [
@@ -33,6 +41,13 @@ const groups = [
     ],
   },
 ]
+const socialLinks = [
+  { label: "LinkedIn", icon: IconBrandLinkedin },
+  { label: "Facebook", icon: IconBrandFacebook },
+  { label: "Instagram", icon: IconBrandInstagram },
+  { label: "X", icon: IconBrandX },
+  { label: "YouTube", icon: IconBrandYoutube },
+]
 export function Footer() {
   return (
     <footer
@@ -60,6 +75,21 @@ export function Footer() {
               <br />
               heart of intelligent systems.
             </TextReveal>
+            <nav
+              aria-label="Social media"
+              className="mt-5 flex flex-wrap gap-2"
+            >
+              {socialLinks.map(({ label, icon: Icon }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="flex size-11 items-center justify-center rounded-full border border-footer-foreground/20 text-footer-link transition-colors hover:bg-footer-foreground/10 focus-visible:outline-footer-accent"
+                >
+                  <Icon className="size-5" aria-hidden="true" />
+                </a>
+              ))}
+            </nav>
           </TextReveal>
           {groups.map((group, index) => (
             <TextReveal
@@ -127,9 +157,21 @@ export function Footer() {
               as="p"
               className="mb-4 text-xs leading-relaxed text-footer-muted"
             >
-              {company.email}
+              <a
+                href={`mailto:${company.email}`}
+                className="break-all hover:underline"
+              >
+                {company.email}
+              </a>
               <br />
-              {company.hours}
+              <a
+                href={`tel:${company.phone.replace(/\s/g, "")}`}
+                className="hover:underline"
+              >
+                {company.phone}
+              </a>
+              <br />
+              {company.address}
             </TextReveal>
             <a href="/contact" className={buttonVariants({ size: "cta" })}>
               Start a conversation
