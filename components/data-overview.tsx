@@ -31,7 +31,7 @@ export function DataOverview() {
             "Speech & audio annotation",
           ].map((label) => (
             <a
-              href="#contact"
+              href="/contact#inquiry"
               key={label}
               className="group flex items-center justify-between border-b border-border py-4 text-[13px] transition-colors hover:text-primary motion-reduce:transition-none"
             >
