@@ -1,30 +1,53 @@
-import { IconArrowRight } from "@tabler/icons-react"
-import { buttonVariants } from "@/components/ui/button"
-import { TextReveal } from "@/components/text-reveal"
+"use client"
 
-const strengths = [
-  { title: "Human-reviewed", description: "careful annotation and quality checks" },
-  { title: "Agile teams", description: "workflows that adapt as projects grow" },
-  { title: "Every detail", description: "attention to complex and edge-case data" },
-  { title: "Real-world context", description: "understanding beyond the label" },
-]
+import { IconArrowUpRight } from "@tabler/icons-react"
+import { buttonVariants } from "@/components/ui/button"
+import ParticleText from "@/components/ParticleText"
+import { TextReveal } from "@/components/text-reveal"
 
 export function ClosingCta() {
   return (
-    <section id="get-started" aria-labelledby="closing-cta-title" className="bg-muted/65 px-5 py-16 sm:px-10 lg:px-16 lg:py-20">
-      <div className="mx-auto max-w-[1400px] text-center">
-        <TextReveal as="p" delay={0} className="mb-4 text-xs font-medium tracking-wide text-muted-foreground">Humans in the data loop</TextReveal>
-        <TextReveal as="h2" id="closing-cta-title" className="mx-auto max-w-4xl text-3xl font-medium leading-tight tracking-[-0.035em] text-balance sm:text-4xl lg:text-[44px]">Support your models with human-verified data.</TextReveal>
-        <TextReveal as="p" className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">Deodhani brings human expertise to computer vision, language, and multimodal data—helping your team build with data it can trust.</TextReveal>
-        <div className="mx-auto my-10 grid max-w-6xl grid-cols-1 gap-y-7 min-[480px]:grid-cols-2 lg:my-14 lg:grid-cols-4 lg:gap-y-0">
-          {strengths.map((strength, index) => (
-            <div key={strength.title} className="px-5 min-[480px]:even:border-l min-[480px]:even:border-border lg:border-l lg:first:border-l-0">
-              <TextReveal as="h3" delay={index * 0.06} className="text-xl font-medium tracking-tight sm:text-2xl">{strength.title}</TextReveal>
-              <TextReveal as="p" delay={0.12 + index * 0.06} className="mx-auto mt-3 max-w-[220px] text-xs leading-relaxed text-muted-foreground sm:text-sm">{strength.description}</TextReveal>
-            </div>
-          ))}
-        </div>
-        <a href="mailto:info@deodhanitechnologies.com" className={buttonVariants({ size: "cta" })}>Get started<IconArrowRight aria-hidden="true" /></a>
+    <section
+      id="get-started"
+      aria-labelledby="closing-cta-title"
+      className="closing-stage"
+    >
+      <div className="closing-copy">
+        <TextReveal as="p" className="text-sm text-muted-foreground">
+          Your next breakthrough starts here.
+        </TextReveal>
+        <TextReveal as="h2" id="closing-cta-title" className="particle-heading">
+          <ParticleText
+            text="Better data. Better AI."
+            fontSize="clamp(32px, 5.7vw, 82px)"
+            fontWeight={650}
+            color="#12294d"
+            highlightColor="#2f73b0"
+            particleSize={1.3}
+            density={2}
+            idleDrift={0}
+            scatter={90}
+            trigger="hover"
+          />
+        </TextReveal>
+        <TextReveal
+          as="p"
+          delay={0.12}
+          className="mx-auto mb-8 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base"
+        >
+          Tell us where your model gets stuck.
+          <br />
+          We’ll work through the data with you.
+        </TextReveal>
+        <TextReveal as="div" delay={0.22}>
+          <a
+            href="/contact#inquiry"
+            className={buttonVariants({ size: "cta" })}
+          >
+            Let’s talk about your project{" "}
+            <IconArrowUpRight data-icon="inline-end" aria-hidden="true" />
+          </a>
+        </TextReveal>
       </div>
     </section>
   )

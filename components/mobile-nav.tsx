@@ -1,9 +1,10 @@
 "use client"
 import { useState } from "react"
+import Link from "next/link"
 import { Dialog } from "@base-ui/react/dialog"
 import { IconX, IconMenu2 } from "@tabler/icons-react"
-import { Button } from "@/components/ui/button"
-import { companyLinks, productLinks } from "@/components/nav-links"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { companyLinks, serviceLinks } from "@/components/nav-links"
 import { LinkItem } from "@/components/sheard"
 export function MobileNav() {
   const [open, setOpen] = useState(false)
@@ -42,25 +43,15 @@ export function MobileNav() {
           </div>
           <nav aria-label="Mobile navigation">
             <h2 className="mt-5 mb-2.5 text-xs text-muted-foreground">
-              Data products
+              Services
             </h2>
-            {productLinks.map((link) => (
+            {serviceLinks.map((link) => (
               <LinkItem
                 key={link.label}
                 {...link}
                 onClick={() => setOpen(false)}
               />
             ))}
-            <div className="flex flex-col gap-[18px] px-3.5 py-5 text-sm">
-              {[
-                ["OTS datasets", "/#data-products"],
-                ["Enterprise data", "/#annotation-team"],
-              ].map(([label, href]) => (
-                <a key={label} href={href} onClick={() => setOpen(false)}>
-                  {label}
-                </a>
-              ))}
-            </div>
             <h2 className="mt-5 mb-2.5 text-xs text-muted-foreground">
               Company
             </h2>
@@ -71,6 +62,16 @@ export function MobileNav() {
                 onClick={() => setOpen(false)}
               />
             ))}
+            <Link
+              href="/contact"
+              className={buttonVariants({
+                size: "lg",
+                className: "mt-6 w-full",
+              })}
+              onClick={() => setOpen(false)}
+            >
+              Get in touch
+            </Link>
           </nav>
         </Dialog.Popup>
       </Dialog.Portal>

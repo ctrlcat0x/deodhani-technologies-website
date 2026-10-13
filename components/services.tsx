@@ -145,7 +145,7 @@ export function Services() {
                     ))}
                   </ol>
                   <a
-                    href="#contact"
+                    href={service.url}
                     className={buttonVariants({
                       variant: "default",
                       size: "lg",
@@ -153,7 +153,7 @@ export function Services() {
                         "h-11 gap-4 px-5 text-[13px] motion-safe:hover:-translate-y-0.5",
                     })}
                   >
-                    Discuss your project
+                    Explore this service
                     <IconArrowUpRight
                       data-icon="inline-end"
                       aria-hidden="true"

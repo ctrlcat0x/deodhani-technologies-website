@@ -2,8 +2,8 @@ export const company = {
   name: "Deodhani Technologies",
   email: "info@deodhanitechnologies.com",
   hours: "Monday–Saturday, 9:00 am–6:00 pm",
-  contactUrl: "https://www.deodhanitechnologies.com/Home/Contact.html",
-  aboutUrl: "https://www.deodhanitechnologies.com/Company/Aboutus.html",
+  contactUrl: "/contact",
+  aboutUrl: "/about",
   // Add the confirmed international number, including country code, without spaces or +.
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
 }
@@ -24,7 +24,7 @@ export const services = [
       "Keypoint labeling",
     ],
     workflow: ["Brief", "Collect", "Label", "Review", "Deliver"],
-    url: "https://www.deodhanitechnologies.com/Services/ImageAnnotation.html",
+    url: "/services/ai-data-annotation",
   },
   {
     id: "video",
@@ -42,7 +42,7 @@ export const services = [
       "Scene classification",
     ],
     workflow: ["Brief", "Capture", "Annotate", "Review", "Deliver"],
-    url: "https://www.deodhanitechnologies.com/Services/DataCollection.html",
+    url: "/services/ai-data-annotation",
   },
   {
     id: "speech",
@@ -60,7 +60,7 @@ export const services = [
       "Audio segmentation",
     ],
     workflow: ["Brief", "Record", "Transcribe", "Review", "Deliver"],
-    url: "https://www.deodhanitechnologies.com/Services/Transcription.html",
+    url: "/services/transcription-and-speech",
   },
   {
     id: "text",
@@ -78,7 +78,7 @@ export const services = [
       "Document structure",
     ],
     workflow: ["Brief", "Prepare", "Annotate", "Review", "Deliver"],
-    url: "https://www.deodhanitechnologies.com/Services/TextAnnotation.html",
+    url: "/services/ai-data-annotation",
   },
   {
     id: "collection",
@@ -96,7 +96,7 @@ export const services = [
       "Text datasets",
     ],
     workflow: ["Scope", "Plan", "Collect", "Review", "Deliver"],
-    url: "https://www.deodhanitechnologies.com/Services/DataCollection.html",
+    url: "/services/data-collection",
   },
   {
     id: "language",
@@ -114,7 +114,7 @@ export const services = [
       "Language review",
     ],
     workflow: ["Brief", "Prepare", "Translate", "Review", "Deliver"],
-    url: "https://www.deodhanitechnologies.com/Services/Datasets.html",
+    url: "/services/translation-and-localization",
   },
   {
     id: "evaluation",
@@ -132,6 +132,6 @@ export const services = [
       "Human feedback",
     ],
     workflow: ["Define", "Prepare", "Evaluate", "Review", "Deliver"],
-    url: "https://www.deodhanitechnologies.com/Services/ContentEvaluation.html",
+    url: "/services/ai-model-evaluation",
   },
 ]

@@ -1,90 +1,137 @@
-import { MarqueeEntrance } from "@/components/marquee-entrance"
-import { TextReveal } from "@/components/text-reveal"
-import { HeroCarousel } from "@/components/hero-carousel"
+"use client"
+
+import Link from "next/link"
 import { IconArrowUpRight } from "@tabler/icons-react"
+import TechText from "@/components/TechText"
+import CircularGallery from "@/components/CircularGallery"
 import { buttonVariants } from "@/components/ui/button"
+import { TextReveal } from "@/components/text-reveal"
+
 const samples = [
   {
-    src: "/images/hero img (1).png",
-    alt: "Generated document with OCR bounding boxes around text, tables, and signature",
-    landscape: false,
-  },
-  {
-    src: "/images/hero img (3).webp",
-    alt: "X-ray image with bone segmentation and annotation review",
-    landscape: false,
+    src: "/images/deodhani/speech-collection.webp",
+    alt: "Illustrative speech recording in an Assamese courtyard",
+    title: "Every voice has a story",
+    subtitle: "Speech collection",
   },
   {
     src: "/images/hero img (1).jpg",
-    alt: "City traffic with cars, signs, and streetlights annotated",
-    landscape: true,
+    alt: "City traffic annotated with object detection boxes",
+    title: "A world in motion",
+    subtitle: "Computer vision",
   },
   {
-    src: "/images/hero img (1).webp",
-    alt: "Leaf with an outlined region of necrosis",
-    landscape: false,
+    src: "/images/hero img (1).png",
+    alt: "Document with OCR text and signature annotations",
+    title: "Beyond the written word",
+    subtitle: "Document intelligence",
   },
   {
-    src: "/images/hero img (1).svg",
-    alt: "Audio annotation waveform and transcription example",
-    landscape: false,
+    src: "/images/hero img (3).webp",
+    alt: "X-ray with bone segmentation",
+    title: "Every detail matters",
+    subtitle: "Medical annotation",
   },
   {
     src: "/images/hero img (2).png",
-    alt: "Generated warehouse conveyor with object detection boxes around parcels and a robotic gripper",
-    landscape: false,
+    alt: "Warehouse parcels and robotic gripper with detection boxes",
+    title: "Precision at work",
+    subtitle: "Industrial vision",
+  },
+  {
+    src: "/images/hero img (1).webp",
+    alt: "Leaf annotated to identify necrosis",
+    title: "Grounded in the real world",
+    subtitle: "Image segmentation",
   },
   {
     src: "/images/hero img (2).webp",
-    alt: "LiDAR point cloud with three-dimensional bounding boxes around vehicles",
-    landscape: true,
+    alt: "LiDAR point cloud with vehicle bounding boxes",
+    title: "A new dimension",
+    subtitle: "3D annotation",
   },
   {
     src: "/images/hero img (4).webp",
-    alt: "Speech annotation with separate waveform regions for two speakers",
-    landscape: true,
+    alt: "Audio waveform with distinct speaker regions",
+    title: "Every voice understood",
+    subtitle: "Speech & language",
+  },
+  {
+    src: "/images/deodhani/quality-review.webp",
+    alt: "Blue particles passing through glass quality review layers",
+    title: "Clarity through review",
+    subtitle: "Data quality",
   },
 ]
+
+const galleryItems = samples.map(({ src, alt, title }) => ({
+  image: src,
+  alt,
+  text: title,
+}))
+
 export function Hero() {
   return (
-    <section
-      className="mx-auto grid w-full max-w-[1660px] items-center gap-12 px-5 py-12 sm:px-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:px-16 lg:py-20"
-      aria-labelledby="hero-title"
-    >
-      <div className="text-left">
-        <TextReveal
-          as="h1"
-          id="hero-title"
-          className="max-w-[760px] font-mono text-[clamp(34px,3.6vw,60px)] leading-[1.12] font-normal tracking-[-2px] text-balance sm:tracking-[-2.8px]"
-        >
-          REAL HUMAN DATA FOR
-          <br />
-          AI INFRASTRUCTURE.
+    <section className="hero-stage" aria-labelledby="hero-title">
+      <div className="hero-orbit" aria-hidden="true" />
+      <div className="hero-intro">
+        <TextReveal as="p" delay={0} className="hero-kicker">
+          <span /> People behind the intelligence.
         </TextReveal>
-        <TextReveal
-          as="p"
-          className="mt-7 mb-8 max-w-[490px] text-sm leading-[1.8] text-muted-foreground sm:text-base"
-        >
-          Intelligence starts with understanding. We turn images, text, voice,
-          and documents into the high-quality data your AI needs to perform.
+        <TextReveal as="h1" delay={0.08} id="hero-title" className="hero-title">
+          <span className="sr-only">Real human data. Extraordinary AI.</span>
+          <span aria-hidden="true" className="hero-tech-line">
+            <TechText
+              text="Real human data."
+              fontSize={138}
+              fontWeight={650}
+              color="#12294d"
+              accentColor="#2f73b0"
+              labels={false}
+              draggable={false}
+              sweep
+            />
+          </span>
+          <span aria-hidden="true" className="hero-color-line">
+            Extraordinary AI.
+          </span>
         </TextReveal>
-        <div className="flex flex-wrap gap-3">
-          <a href="#data-products" className={buttonVariants({ size: "cta" })}>
-            Explore our data
+        <TextReveal as="p" delay={0.2} className="hero-description">
+          Models learn from data. Great data starts with people.
+          <br className="hidden sm:block" /> Annotation, collection, and
+          evaluation. Built around what your AI needs to learn.
+        </TextReveal>
+        <TextReveal as="div" delay={0.3} className="hero-actions">
+          <Link
+            href="/contact#inquiry"
+            className={buttonVariants({ size: "cta" })}
+          >
+            Tell us what you’re building{" "}
             <IconArrowUpRight data-icon="inline-end" aria-hidden="true" />
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            href="#data-products"
             className={buttonVariants({ variant: "outline", size: "cta" })}
           >
-            Talk to our team
+            Explore our expertise{" "}
             <IconArrowUpRight data-icon="inline-end" aria-hidden="true" />
-          </a>
-        </div>
+          </Link>
+        </TextReveal>
       </div>
-      <MarqueeEntrance>
-        <HeroCarousel images={samples} />
-      </MarqueeEntrance>
+      <div className="hero-gallery">
+        <CircularGallery
+          items={galleryItems}
+          showTitles={false}
+          textColor="#12294d"
+          font="500 22px sans-serif"
+          bend={2.5}
+          borderRadius={0.04}
+          gap={0.18}
+          wave={0.35}
+          autoScroll={0.6}
+          scrollEase={0.06}
+        />
+      </div>
     </section>
   )
 }
