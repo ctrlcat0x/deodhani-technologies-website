@@ -76,8 +76,8 @@ function TestimonialSlides({ paused }: { paused: boolean }) {
             aria-hidden={selectedIndex !== index}
             inert={selectedIndex !== index}
           >
-            <div className="grid h-full grid-cols-1 md:grid-cols-2">
-              <div className="relative m-4 aspect-[16/11] overflow-hidden bg-secondary sm:m-5">
+            <div className="grid h-full grid-cols-1 border border-border md:grid-cols-2">
+              <div className="relative aspect-[16/11] overflow-hidden bg-secondary md:aspect-auto md:min-h-[420px] lg:min-h-[540px]">
                 <Image
                   src={testimonial.image}
                   alt=""
