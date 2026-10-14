@@ -4412,6 +4412,8 @@ snapshots:
     dependencies:
       embla-carousel: 8.6.0
 
+  embla-carousel@8.6.0: {}
+
   emoji-regex@10.6.0: {}
 
   emoji-regex@9.2.2: {}
