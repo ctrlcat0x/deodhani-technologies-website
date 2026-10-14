@@ -83,9 +83,22 @@ export function HomeSections() {
             A focused set of services, delivered through a clear review process.
           </TextReveal>
           <div className="stats-grid">
-            <TextReveal as="div" delay={0.16}><strong>{servicePages.length}</strong><span>Service areas</span></TextReveal>
-            <TextReveal as="div" delay={0.22}><strong>{checks.length}</strong><span>Quality checks</span></TextReveal>
-            <TextReveal as="div" delay={0.28}><strong>2</strong><span>Ways to work with us</span></TextReveal>
+            <TextReveal as="div" delay={0.16}>
+              <strong>{servicePages.length}</strong>
+              <span>Service areas</span>
+            </TextReveal>
+            <TextReveal as="div" delay={0.22}>
+              <strong>{servicePages[0].topics.length}</strong>
+              <span>Annotation data types</span>
+            </TextReveal>
+            <TextReveal as="div" delay={0.28}>
+              <strong>{checks.length}</strong>
+              <span>Quality checks</span>
+            </TextReveal>
+            <TextReveal as="div" delay={0.34}>
+              <strong>2</strong>
+              <span>Ways to work with us</span>
+            </TextReveal>
           </div>
         </div>
         <TextReveal as="div" effect="image" className="stats-map">

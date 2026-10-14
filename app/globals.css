@@ -496,25 +496,36 @@ header nav[aria-label="Main navigation"] {
   gap: 30px;
 }
 .stats-section {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  position: relative;
+  display: flex;
   align-items: center;
-  gap: clamp(36px, 7vw, 100px);
+  min-height: 620px;
   overflow: hidden;
-  background: color-mix(in srgb, var(--secondary) 58%, white);
+  background: transparent;
+  isolation: isolate;
 }
-.stats-copy .home-heading { max-width: 620px; }
+.stats-copy { position: relative; z-index: 1; width: min(68%, 850px); }
+.stats-copy .home-heading { max-width: 650px; }
 .stats-copy .home-lead { max-width: 500px; }
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: 42px;
 }
 .stats-grid > div { display: flex; flex-direction: column; gap: 6px; padding: 0 18px; border-left: 1px solid var(--border); }
 .stats-grid > div:first-child { padding-left: 0; border-left: 0; }
 .stats-grid strong { font-size: clamp(30px, 3.2vw, 48px); line-height: 1; letter-spacing: -0.05em; }
 .stats-grid span { color: var(--muted-foreground); font-size: 13px; }
-.stats-map { min-width: 0; }
+.stats-map {
+  position: absolute;
+  z-index: 0;
+  top: 12%;
+  right: 0;
+  width: 61%;
+  opacity: 0.8;
+  pointer-events: none;
+  mask-image: linear-gradient(90deg, transparent 0%, rgb(0 0 0 / 0.45) 22%, #000 48%);
+}
 .expertise-image {
   position: relative;
   aspect-ratio: 1.15;
@@ -739,8 +750,9 @@ main img {
   .quality-section {
     gap: 40px;
   }
-  .stats-section { grid-template-columns: minmax(0, 1fr); }
-  .stats-map { order: -1; }
+  .stats-section { min-height: 570px; }
+  .stats-copy { width: min(76%, 760px); }
+  .stats-map { top: 8%; right: -8%; width: 68%; opacity: 0.55; }
 }
 @media (max-width: 767px) {
   .method-section,
@@ -755,7 +767,12 @@ main img {
   .faq-item button { min-height: 72px; padding: 20px; }
   .faq-answer-wrap p { padding: 0 20px 24px; }
   .stats-grid { margin-top: 30px; }
+  .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
   .stats-grid > div { padding-inline: 10px; }
+  .stats-grid > div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .stats-copy { width: 100%; }
+  .stats-section { min-height: 620px; }
+  .stats-map { top: 7%; right: -22%; width: 100%; opacity: 0.33; }
   .stats-grid span { font-size: 11px; }
   .expertise-grid {
     grid-template-columns: minmax(0, 1fr);
