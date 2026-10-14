@@ -548,6 +548,10 @@ header nav[aria-label="Main navigation"] {
   font-weight: 550;
   line-height: 1.1;
 }
+.expertise-item--single-line-title h3 {
+  white-space: nowrap;
+  font-size: clamp(20px, 2.1vw, 30px);
+}
 .expertise-item > p {
   margin: 14px 0 24px;
   min-height: 76px;

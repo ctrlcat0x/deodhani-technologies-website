@@ -137,7 +137,7 @@ export function HomeSections() {
               effect="image"
               delay={index * 0.1}
               key={offering.title}
-              className="expertise-item"
+              className={`expertise-item${offering.title === "Translation and localization" ? " expertise-item--single-line-title" : ""}`}
             >
               <div className="expertise-image">
                 <Image
