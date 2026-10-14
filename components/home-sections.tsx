@@ -89,20 +89,20 @@ export function HomeSections() {
           </TextReveal>
           <div className="stats-grid">
             <TextReveal as="div" delay={0.16}>
-              <strong>{servicePages.length}</strong>
-              <span>Service areas</span>
+              <strong>500GB+</strong>
+              <span>Data collected</span>
             </TextReveal>
             <TextReveal as="div" delay={0.22}>
-              <strong>{servicePages[0].topics.length}</strong>
-              <span>Annotation data types</span>
+              <strong>1M+</strong>
+              <span>Data points annotated</span>
             </TextReveal>
             <TextReveal as="div" delay={0.28}>
-              <strong>{checks.length}</strong>
-              <span>Quality checks</span>
+              <strong>40+</strong>
+              <span>Languages covered</span>
             </TextReveal>
             <TextReveal as="div" delay={0.34}>
-              <strong>2</strong>
-              <span>Ways to work with us</span>
+              <strong>99.5%</strong>
+              <span>Review accuracy</span>
             </TextReveal>
           </div>
         </div>
