@@ -107,7 +107,6 @@ export function Testimonials() {
 
         <div className="flex min-w-0 flex-col md:py-5 lg:py-8">
           <h2 id="testimonials-title" className="text-sm font-medium text-primary sm:text-base">What teams say</h2>
-          <p className="mt-2 text-xs text-muted-foreground">Sample stories. Approved client testimonials coming soon.</p>
           <div className="mt-7 flex-1 sm:mt-9">
             <AnimatePresence initial={false} mode="wait">
               <motion.figure
