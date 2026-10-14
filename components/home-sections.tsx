@@ -1,3 +1,4 @@
+import { Testimonials } from "@/components/testimonials"
 import Image from "next/image"
 import Link from "next/link"
 import { publicPageHref } from "@/lib/public-pages"
@@ -273,6 +274,8 @@ export function HomeSections() {
           </ol>
         </div>
       </section>
+
+      <Testimonials />
 
       <section
         className="home-section people-section"
