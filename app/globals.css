@@ -495,6 +495,26 @@ header nav[aria-label="Main navigation"] {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 30px;
 }
+.stats-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: clamp(36px, 7vw, 100px);
+  overflow: hidden;
+  background: color-mix(in srgb, var(--secondary) 58%, white);
+}
+.stats-copy .home-heading { max-width: 620px; }
+.stats-copy .home-lead { max-width: 500px; }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 42px;
+}
+.stats-grid > div { display: flex; flex-direction: column; gap: 6px; padding: 0 18px; border-left: 1px solid var(--border); }
+.stats-grid > div:first-child { padding-left: 0; border-left: 0; }
+.stats-grid strong { font-size: clamp(30px, 3.2vw, 48px); line-height: 1; letter-spacing: -0.05em; }
+.stats-grid span { color: var(--muted-foreground); font-size: 13px; }
+.stats-map { min-width: 0; }
 .expertise-image {
   position: relative;
   aspect-ratio: 1.15;
@@ -526,14 +546,17 @@ header nav[aria-label="Main navigation"] {
 }
 .expertise-item li a {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 14px;
-  padding-block: 14px;
-  min-height: 48px;
-  font-size: 13px;
+  padding-block: 16px;
+  min-height: 58px;
+  font-size: 14px;
   line-height: 1.5;
 }
+.expertise-item li a span { display: grid; gap: 5px; }
+.expertise-item li a strong { font-size: 14px; font-weight: 600; }
+.expertise-item li a small { color: var(--muted-foreground); font-size: 12px; line-height: 1.65; }
 .expertise-item li a:hover {
   color: var(--primary);
 }
@@ -605,22 +628,72 @@ header nav[aria-label="Main navigation"] {
   max-width: 420px;
 }
 .people-section {
+  display: block;
+  padding-block: clamp(76px, 10vw, 140px);
+}
+.people-intro {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: clamp(40px, 7vw, 100px);
+  grid-template-columns: 1fr 0.7fr;
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+.people-intro .home-heading { font-size: clamp(44px, 7vw, 88px); }
+.people-intro .home-lead { max-width: 520px; justify-self: end; }
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+.people-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--background);
 }
 .people-image {
   position: relative;
-  min-height: 410px;
-  border-radius: 20px;
+  min-height: 360px;
+  border-radius: 0;
   overflow: hidden;
   background: var(--secondary);
 }
-.people-links {
+.people-card-copy { padding: 26px; }
+.people-card-copy h3 { margin-bottom: 22px; font-size: clamp(23px, 2.5vw, 32px); letter-spacing: -0.035em; }
+.people-cta {
   display: flex;
-  flex-wrap: wrap;
-  column-gap: 28px;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-radius: 12px;
+  padding: 16px 20px;
+  background: var(--primary);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 180ms ease, transform 180ms ease;
+}
+.people-cta:hover { background: color-mix(in srgb, var(--primary) 84%, black); transform: translateY(-1px); }
+.people-cta svg { width: 20px; height: 20px; }
+.faq-section { padding-block: clamp(72px, 9vw, 128px); }
+.faq-heading { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 46px; }
+.faq-heading .home-heading { max-width: 800px; }
+.faq-heading .home-lead { max-width: 450px; }
+.faq-contact { display: inline-flex; align-items: center; gap: 5px; color: var(--foreground); font-weight: 600; }
+.faq-contact:hover { color: var(--primary); }
+.faq-contact svg { width: 18px; height: 18px; }
+.faq-list { display: grid; gap: 14px; }
+.faq-item { overflow: hidden; border-radius: 20px; background: color-mix(in srgb, var(--secondary) 56%, white); }
+.faq-item h3 { margin: 0; }
+.faq-item button { display: flex; width: 100%; min-height: 86px; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 30px; text-align: left; font-size: clamp(17px, 2vw, 24px); letter-spacing: -0.025em; }
+.faq-item button:focus-visible { outline: 2px solid var(--ring); outline-offset: -4px; border-radius: 18px; }
+.faq-item button svg { width: 23px; height: 23px; flex: none; color: var(--primary); }
+.faq-answer-wrap { overflow: hidden; }
+.faq-answer-wrap p { max-width: 1000px; padding: 0 30px 30px; color: var(--muted-foreground); font-size: clamp(15px, 1.7vw, 20px); line-height: 1.7; }
+.faq-item.is-open { background: color-mix(in srgb, var(--secondary) 76%, white); }
+@media (prefers-reduced-motion: reduce) {
+  .people-cta { transition: none; }
 }
 main > *,
 .home-section > *,
@@ -645,24 +718,18 @@ main img {
     max-width: 540px;
   }
   .expertise-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
   }
   .expertise-item {
-    display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
-    column-gap: 32px;
-    align-items: start;
+    display: block;
   }
   .expertise-image {
-    grid-row: span 3;
-    height: 100%;
-    min-height: 300px;
-    aspect-ratio: auto;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1.25;
   }
-  .expertise-item h3 {
-    margin-top: 0;
-  }
+  .expertise-item h3 { margin-top: 22px; }
   .expertise-item > p {
     min-height: 0;
   }
@@ -672,17 +739,27 @@ main img {
   .quality-section {
     gap: 40px;
   }
+  .stats-section { grid-template-columns: minmax(0, 1fr); }
+  .stats-map { order: -1; }
 }
 @media (max-width: 767px) {
   .method-section,
   .quality-section,
-  .people-section {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 38px;
-  }
+  .people-section { display: block; }
+  .people-intro { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-bottom: 30px; }
+  .people-intro .home-lead { justify-self: start; }
+  .people-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .people-image { min-height: 280px; }
+  .faq-heading { display: block; margin-bottom: 30px; }
+  .faq-heading .home-lead { margin-top: 18px; }
+  .faq-item button { min-height: 72px; padding: 20px; }
+  .faq-answer-wrap p { padding: 0 20px 24px; }
+  .stats-grid { margin-top: 30px; }
+  .stats-grid > div { padding-inline: 10px; }
+  .stats-grid span { font-size: 11px; }
   .expertise-grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: 48px;
+    gap: 40px;
   }
   .expertise-item {
     display: block;

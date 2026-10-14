@@ -1,76 +1,55 @@
 import { Testimonials } from "@/components/testimonials"
 import Image from "next/image"
 import Link from "next/link"
-import { publicPageHref } from "@/lib/public-pages"
 import {
   IconArrowUpRight,
-  IconPlus,
   IconCheck,
-  IconArrowRight,
 } from "@tabler/icons-react"
 import { TextReveal } from "@/components/text-reveal"
-
-const phases = [
-  {
-    title: "Define",
-    line: "Agree on what you need.",
-    text: "Start with what your model needs to learn. Together, we define the data, label taxonomy, edge cases, and delivery format before the work begins.",
-  },
-  {
-    title: "Collect",
-    line: "Collect the right data.",
-    text: "Source images, video, speech, and text around your use case. Agree on the languages, environments, and collection requirements that make your dataset relevant.",
-  },
-  {
-    title: "Annotate",
-    line: "Label each example.",
-    text: "Turn raw inputs into useful training examples. Our teams work from shared guidelines, with calibration samples to keep interpretation consistent.",
-  },
-  {
-    title: "Review",
-    line: "Check and correct the work.",
-    text: "Check labels against the brief, resolve disagreements, and feed what we learn back into the guidelines. Quality is part of the workflow from the start.",
-  },
-  {
-    title: "Deliver",
-    line: "Send data in your format.",
-    text: "Receive structured data in the agreed format. Review the batch with our team, close open questions, and plan the next iteration around your model’s needs.",
-  },
-]
+import { FAQSection } from "@/components/faq-section"
+import { WorldMap } from "@/components/ui/world-map"
+import { servicePages } from "@/lib/service-pages"
 
 const offerings = [
   {
-    title: "Image and video data",
+    title: "Visual data services",
     image: "/images/deodhani/field-collection.webp",
     alt: "Illustration of a field researcher capturing market produce with blue annotation outlines",
-    text: "From a basket at a market to a detail in a scan. Labels that turn pixels into context.",
-    links: [
-      ["Image, video & 3D annotation", "/services/ai-data-annotation"],
-      ["Real-world data collection", "/services/data-collection"],
-    ],
+    serviceSlugs: ["ai-data-annotation", "data-collection"],
   },
   {
-    title: "Speech and language data",
+    title: "Transcription and speech",
     image: "/images/deodhani/speech-collection.webp",
     alt: "Illustration of an Assamese woman recording speech on her phone with an audio waveform",
-    text: "Every voice carries an accent, an intent, a meaning. Bring that understanding into your data.",
-    links: [
-      ["Transcription & speech", "/services/transcription-and-speech"],
-      ["Translation & localization", "/services/translation-and-localization"],
-    ],
+    serviceSlugs: ["transcription-and-speech"],
   },
   {
-    title: "Text and document data",
+    title: "Translation and localization",
+    image: "/images/sourcing/language.jpg",
+    alt: "People collaborating around a shared language task",
+    serviceSlugs: ["translation-and-localization"],
+  },
+  {
+    title: "OCR and document AI",
     image: "/images/deodhani/annotation-workspace.webp",
     alt: "Illustration of an analyst reviewing document annotations in a bright workspace",
-    text: "A document is more than text. A response is more than words. Make the meaning usable.",
-    links: [
-      ["OCR & document AI", "/services/ocr-and-document-ai"],
-      ["Generative AI services", "/services/generative-ai-services"],
-      ["AI model evaluation", "/services/ai-model-evaluation"],
-    ],
+    serviceSlugs: ["ocr-and-document-ai"],
+  },
+  {
+    title: "Generative AI services",
+    image: "/images/sourcing/text.jpg",
+    alt: "Writing materials illustrating language data preparation",
+    serviceSlugs: ["generative-ai-services"],
+  },
+  {
+    title: "AI model evaluation",
+    image: "/images/deodhani/quality-review.webp",
+    alt: "Illustration of structured quality review",
+    serviceSlugs: ["ai-model-evaluation"],
   },
 ]
+
+const serviceBySlug = new Map(servicePages.map((service) => [service.slug, service]))
 
 const checks = [
   {
@@ -94,71 +73,24 @@ const checks = [
 export function HomeSections() {
   return (
     <>
-      <section
-        id="method"
-        className="home-section method-section"
-        aria-labelledby="method-title"
-      >
-        <div className="home-section-intro">
-          <TextReveal as="p" className="home-label">
-            The way we work
-          </TextReveal>
-          <TextReveal as="h2" id="method-title" className="home-heading">
-            What we do
+      <section className="home-section stats-section" aria-labelledby="stats-title">
+        <div className="stats-copy">
+          <TextReveal as="p" className="home-label">Our work at a glance</TextReveal>
+          <TextReveal as="h2" id="stats-title" className="home-heading">
+            Data work shaped around your AI goals.
           </TextReveal>
           <TextReveal as="p" delay={0.12} className="home-lead">
-            We collect, label, check, and deliver data for AI training. Here’s
-            how we work with your team.
+            A focused set of services, delivered through a clear review process.
           </TextReveal>
-          <TextReveal as="div" delay={0.2}>
-            <a href="#method-steps" className="home-text-link">
-              See our process <IconArrowRight aria-hidden="true" />
-            </a>
-          </TextReveal>
-          <TextReveal
-            as="figure"
-            effect="image"
-            delay={0.15}
-            className="method-image"
-          >
-            <Image
-              src="/images/deodhani/field-collection.webp"
-              alt="Illustrative field collection at a market in northeast India"
-              width={1536}
-              height={1024}
-              sizes="(max-width: 767px) calc(100vw - 40px), 42vw"
-            />
-          </TextReveal>
+          <div className="stats-grid">
+            <TextReveal as="div" delay={0.16}><strong>{servicePages.length}</strong><span>Service areas</span></TextReveal>
+            <TextReveal as="div" delay={0.22}><strong>{checks.length}</strong><span>Quality checks</span></TextReveal>
+            <TextReveal as="div" delay={0.28}><strong>2</strong><span>Ways to work with us</span></TextReveal>
+          </div>
         </div>
-        <div id="method-steps" className="method-steps">
-          {phases.map((phase, index) => (
-            <TextReveal
-              as="div"
-              className="method-row"
-              key={phase.title}
-              delay={index * 0.07}
-            >
-              <details
-                key={phase.title}
-                name="data-method"
-                open={index === 0}
-                className="method-step"
-              >
-                <summary>
-                  <span className="step-number">0{index + 1}</span>
-                  <span>{phase.title}</span>
-                  <IconPlus className="method-plus" aria-hidden="true" />
-                </summary>
-                <div className="method-panel">
-                  <div className="method-detail">
-                    <h3>{phase.line}</h3>
-                    <p>{phase.text}</p>
-                  </div>
-                </div>
-              </details>
-            </TextReveal>
-          ))}
-        </div>
+        <TextReveal as="div" effect="image" className="stats-map">
+          <WorldMap />
+        </TextReveal>
       </section>
 
       <section
@@ -199,21 +131,20 @@ export function HomeSections() {
                 />
               </div>
               <h3>{offering.title}</h3>
-              <p>{offering.text}</p>
               <ul>
-                {offering.links.map(([label, href]) => (
-                  <li key={href}>
-                    <a
-                      href={publicPageHref(href)}
-                      role="link"
-                      aria-disabled={!publicPageHref(href) || undefined}
-                      tabIndex={-1}
-                    >
-                      {label}
+                {offering.serviceSlugs.map((slug) => {
+                  const service = serviceBySlug.get(slug)
+                  if (!service) return null
+                  const href = `/services/${service.slug}`
+                  return (
+                    <li key={service.slug}>
+                    <Link href={href}>
+                      <span><strong>{service.label}</strong><small>{service.description}</small></span>
                       <IconArrowUpRight aria-hidden="true" />
-                    </a>
-                  </li>
-                ))}
+                    </Link>
+                    </li>
+                  )
+                })}
               </ul>
             </TextReveal>
           ))}
@@ -277,38 +208,32 @@ export function HomeSections() {
 
       <Testimonials />
 
+      <FAQSection />
+
       <section
         className="home-section people-section"
         aria-labelledby="people-title"
       >
-        <TextReveal as="div" effect="image" className="people-image">
-          <Image
-            src="/images/deodhani/team-collaboration.webp"
-            alt="Illustration of Indian coworkers collaborating on an annotation review"
-            fill
-            sizes="(max-width: 767px) calc(100vw - 40px), 42vw"
-            className="object-cover"
-          />
-        </TextReveal>
-        <div>
-          <TextReveal as="p" className="home-label">
-            Careers and vendor opportunities
-          </TextReveal>
-          <TextReveal as="h2" id="people-title" className="home-heading">
-            Work with us
+        <div className="people-intro">
+          <TextReveal as="div">
+            <TextReveal as="p" className="home-label">Careers and vendor opportunities</TextReveal>
+            <TextReveal as="h2" id="people-title" className="home-heading">Work with us</TextReveal>
           </TextReveal>
           <TextReveal as="p" delay={0.12} className="home-lead">
             Use your language skills and experience to help prepare AI training
             data. Explore roles or join us as a vendor.
           </TextReveal>
-          <TextReveal as="div" delay={0.2} className="people-links">
-            <a role="link" aria-disabled="true" className="home-text-link">
-              Explore careers <IconArrowUpRight aria-hidden="true" />
-            </a>
-            <a role="link" aria-disabled="true" className="home-text-link">
-              Join our vendor network <IconArrowUpRight aria-hidden="true" />
-            </a>
-          </TextReveal>
+        </div>
+        <div className="people-grid">
+          {[
+            { title: "Build your career with us", label: "Careers", href: "/careers", image: "/images/deodhani/team-collaboration.webp", alt: "Illustration of colleagues collaborating around a table" },
+            { title: "Bring your expertise", label: "Become a vendor", href: "/become-a-vendor", image: "/images/deodhani/field-collection.webp", alt: "Illustration of field data collection" },
+          ].map((item) => (
+            <article className="people-card" key={item.href}>
+              <div className="people-image"><Image src={item.image} alt={item.alt} fill sizes="(max-width: 767px) 100vw, 50vw" className="object-cover" /></div>
+              <div className="people-card-copy"><h3>{item.title}</h3><Link href={item.href} className="people-cta">{item.label}<IconArrowUpRight aria-hidden="true" /></Link></div>
+            </article>
+          ))}
         </div>
       </section>
     </>
