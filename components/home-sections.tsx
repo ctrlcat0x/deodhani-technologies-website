@@ -15,7 +15,12 @@ const offerings = [
     title: "Visual data services",
     image: "/images/data-work/annotation-review.jpg",
     alt: "A data specialist reviewing labeled portrait examples",
-    serviceSlugs: ["ai-data-annotation", "data-collection"],
+    serviceSlugs: ["ai-data-annotation"],
+    serviceLink: {
+      label: "AI data annotation & collection",
+      description:
+        "Human-reviewed image, video, text, audio, and 3D annotation, plus real-world data collection shaped to your use case.",
+    },
   },
   {
     title: "Transcription and speech",
@@ -152,7 +157,10 @@ export function HomeSections() {
                   return (
                     <li key={service.slug}>
                     <Link href={href}>
-                      <span><strong>{service.label}</strong><small>{service.description}</small></span>
+                      <span>
+                        <strong>{offering.serviceLink?.label ?? service.label}</strong>
+                        <small>{offering.serviceLink?.description ?? service.description}</small>
+                      </span>
                       <IconArrowUpRight aria-hidden="true" />
                     </Link>
                     </li>
@@ -170,52 +178,58 @@ export function HomeSections() {
         aria-labelledby="quality-title"
       >
         <div className="home-section quality-section">
-          <div className="quality-copy">
-            <TextReveal as="p" className="home-label">
-              Data review
-            </TextReveal>
-            <TextReveal as="h2" id="quality-title" className="home-heading">
-              How we check quality
-            </TextReveal>
+          <div className="quality-intro">
+            <div>
+              <TextReveal as="p" className="home-label">
+                Data review
+              </TextReveal>
+              <TextReveal as="h2" id="quality-title" className="home-heading">
+                How we check quality
+              </TextReveal>
+            </div>
             <TextReveal as="p" delay={0.12} className="home-lead">
               We check the data against your requirements, correct errors, and
               review unclear examples with your team.
             </TextReveal>
-            <TextReveal as="div" delay={0.2}>
-              <Link href="/contact#inquiry" className="home-text-link">
-                Discuss your quality requirements{" "}
-                <IconArrowUpRight aria-hidden="true" />
-              </Link>
-            </TextReveal>
-            <TextReveal
-              as="figure"
-              effect="image"
-              delay={0.15}
-              className="quality-image"
-            >
-              <Image
-                src="/images/deodhani/quality-review.webp"
-                alt="Blue data particles passing through glass review layers into a structured cube"
-                width={1536}
-                height={1024}
-                sizes="(max-width: 767px) calc(100vw - 40px), 42vw"
-              />
-            </TextReveal>
           </div>
-          <ol className="quality-checks">
-            {checks.map((check, index) => (
-              <TextReveal as="li" key={check.title} delay={index * 0.08}>
-                <div className="quality-node" aria-hidden="true">
-                  <IconCheck />
-                </div>
-                <div>
-                  <p className="quality-stage">Review step 0{index + 1}</p>
-                  <h3>{check.title}</h3>
-                  <p>{check.text}</p>
-                </div>
+          <div className="quality-content">
+            <div className="quality-copy">
+              <TextReveal as="div" delay={0.2}>
+                <Link href="/contact#inquiry" className="home-text-link">
+                  Discuss your quality requirements{" "}
+                  <IconArrowUpRight aria-hidden="true" />
+                </Link>
               </TextReveal>
-            ))}
-          </ol>
+              <TextReveal
+                as="figure"
+                effect="image"
+                delay={0.15}
+                className="quality-image"
+              >
+                <Image
+                  src="/images/deodhani/quality-review.webp"
+                  alt="Blue data particles passing through glass review layers into a structured cube"
+                  width={1536}
+                  height={1024}
+                  sizes="(max-width: 767px) calc(100vw - 40px), 42vw"
+                />
+              </TextReveal>
+            </div>
+            <ol className="quality-checks">
+              {checks.map((check, index) => (
+                <TextReveal as="li" key={check.title} delay={index * 0.08}>
+                  <div className="quality-node" aria-hidden="true">
+                    <IconCheck />
+                  </div>
+                  <div>
+                    <p className="quality-stage">Review step 0{index + 1}</p>
+                    <h3>{check.title}</h3>
+                    <p>{check.text}</p>
+                  </div>
+                </TextReveal>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 

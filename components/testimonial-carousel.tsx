@@ -51,20 +51,25 @@ export function TestimonialCarousel() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-title"
-      className="overflow-hidden py-14 sm:py-20 lg:py-24"
+      className="overflow-hidden py-12 sm:py-14 lg:py-[76px]"
     >
       <div className="mx-auto max-w-[1320px]">
-        <div className="mb-8 flex flex-col justify-between gap-3 px-5 sm:flex-row sm:items-end sm:px-10 lg:px-16">
-        <div>
-        <p className="mb-2 text-sm font-semibold tracking-wide text-primary">Illustrative stories</p>
-        <h2
-          id="testimonials-title"
-          className="text-2xl font-semibold tracking-tight sm:text-3xl"
-        >
-          Client stories
-        </h2>
-        </div>
-        <p className="max-w-lg text-sm leading-relaxed text-muted-foreground">Example stories shown for illustration; company marks are visual references.</p>
+        <div className="mb-9 flex flex-col justify-between gap-3 px-5 sm:flex-row sm:items-end sm:px-10 lg:px-16">
+          <div>
+            <p className="mb-4 text-[13px] font-semibold tracking-wide text-primary">
+              Illustrative stories
+            </p>
+            <h2
+              id="testimonials-title"
+              className="text-[clamp(34px,4.2vw,66px)] leading-[1.08] font-semibold tracking-[-0.05em]"
+            >
+              Client stories
+            </h2>
+          </div>
+          <p className="max-w-lg text-sm leading-relaxed text-muted-foreground">
+            Example stories shown for illustration; company marks are visual
+            references.
+          </p>
         </div>
         <InfiniteSlider gap={24} speed={32} speedOnHover={0} className="py-2">
           {testimonials.map(({ quote, role, company, Logo, logoStyle }) => (
