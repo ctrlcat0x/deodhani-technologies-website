@@ -146,7 +146,7 @@ export default function AboutPage() {
             </h2>
             <address className="mt-5 text-sm leading-relaxed text-muted-foreground not-italic">
               <p>Deodhani Technologies</p>
-              <p className="mt-2">Office address pending confirmation.</p>
+              <p className="mt-2">{company.address}</p>
               <a
                 href={`mailto:${company.email}`}
                 className="mt-4 inline-block break-all text-primary underline underline-offset-4"
@@ -154,9 +154,6 @@ export default function AboutPage() {
                 {company.email}
               </a>
             </address>
-            <p className="mt-5 text-sm text-muted-foreground">
-              {company.hours}
-            </p>
           </TextReveal>
           <TextReveal
             as="div"

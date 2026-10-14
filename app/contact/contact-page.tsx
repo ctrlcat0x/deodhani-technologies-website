@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import {
   IconArrowUpRight,
   IconMail,
-  IconClock,
+  IconMapPin,
+  IconPhone,
   IconBriefcase,
 } from "@tabler/icons-react"
 import { Testimonials } from "@/components/testimonials"
@@ -78,18 +79,41 @@ export default function ContactPage() {
               </a>
             </TextReveal>
             <TextReveal as="div" className="py-7">
-              <IconClock
+              <IconPhone
                 className="mb-4 size-5 text-primary"
                 aria-hidden="true"
               />
               <TextReveal as="h3" className="text-base font-medium">
-                Working hours
+                Phone & WhatsApp
+              </TextReveal>
+              <a
+                href={`tel:${company.phone.replace(/\s/g, "")}`}
+                className="mt-3 inline-block text-sm text-primary underline-offset-4 hover:underline"
+              >
+                {company.phone}
+              </a>
+              <a
+                href={`https://wa.me/${company.whatsappNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 block text-sm text-primary underline-offset-4 hover:underline"
+              >
+                Chat on WhatsApp
+              </a>
+            </TextReveal>
+            <TextReveal as="div" className="py-7">
+              <IconMapPin
+                className="mb-4 size-5 text-primary"
+                aria-hidden="true"
+              />
+              <TextReveal as="h3" className="text-base font-medium">
+                Office address
               </TextReveal>
               <TextReveal
                 as="p"
                 className="mt-3 text-sm leading-relaxed text-muted-foreground"
               >
-                {company.hours}
+                {company.address}
               </TextReveal>
             </TextReveal>
             <TextReveal as="div" className="py-7">
