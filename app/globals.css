@@ -493,9 +493,13 @@ header nav[aria-label="Main navigation"] {
 }
 .expertise-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: 30px;
+  row-gap: 42px;
 }
+.expertise-grid > * { grid-column: span 2; }
+.expertise-grid > :nth-child(4) { grid-column: 2 / span 2; }
+.expertise-grid > :nth-child(5) { grid-column: 4 / span 2; }
 .stats-section {
   position: relative;
   display: flex;
@@ -541,7 +545,7 @@ header nav[aria-label="Main navigation"] {
   transform: scale(1.035);
 }
 .expertise-item h3 {
-  margin-top: 26px;
+  margin-top: 22px;
   min-height: 2.2em;
   font-size: clamp(26px, 2.5vw, 36px);
   letter-spacing: -0.045em;
@@ -553,10 +557,14 @@ header nav[aria-label="Main navigation"] {
   font-size: clamp(20px, 2.1vw, 30px);
 }
 .expertise-item > p {
-  margin: 14px 0 24px;
-  min-height: 76px;
+  display: -webkit-box;
+  margin: 12px 0 20px;
+  min-height: 3.4em;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   font-size: 14px;
-  line-height: 1.8;
+  line-height: 1.7;
   color: var(--muted-foreground);
 }
 .expertise-item li {
@@ -584,10 +592,10 @@ header nav[aria-label="Main navigation"] {
 }
 .expertise-item li a small {
   display: -webkit-box;
-  min-height: 4.95em;
+  min-height: 3.3em;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   color: var(--muted-foreground);
   font-size: 12px;
   line-height: 1.65;
@@ -771,9 +779,12 @@ main img {
     max-width: 540px;
   }
   .expertise-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 28px;
   }
+  .expertise-grid > * { grid-column: span 2; }
+  .expertise-grid > :nth-child(4) { grid-column: auto / span 2; }
+  .expertise-grid > :nth-child(5) { grid-column: 2 / span 2; }
   .expertise-item {
     display: block;
   }
@@ -824,6 +835,9 @@ main img {
     grid-template-columns: minmax(0, 1fr);
     gap: 40px;
   }
+  .expertise-grid > *,
+  .expertise-grid > :nth-child(4),
+  .expertise-grid > :nth-child(5) { grid-column: auto; }
   .expertise-item {
     display: block;
   }
