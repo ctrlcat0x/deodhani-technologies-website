@@ -105,9 +105,6 @@ export function TestimonialCarousel() {
                 </blockquote>
                 <div>
                   <p className="text-sm font-semibold sm:text-base">{role}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Illustrative example · not a client quote
-                  </p>
                 </div>
               </div>
             </article>

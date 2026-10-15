@@ -5,7 +5,7 @@ const groups = [
     description:
       "Collect the voices, documents, images, and video your AI needs, with clear contributor guidance and quality checks from the start.",
     image: "/images/services/data-collection.png",
-    alt: "A diverse group of people represented in a connected data collection",
+    alt: "Contributors capturing bus, street, and local market data",
     workflow: ["Set the brief", "Prepare contributors", "Collect data", "Review & deliver"],
     inquiry: "Tell us about your data type, participant criteria, languages, and target volume.",
     services: [
@@ -186,7 +186,7 @@ const groups = [
     description:
       "Carry meaning across Indian languages with attention to context, terminology, and the way people naturally speak and read.",
     image: "/images/services/voice-capture.png",
-    alt: "A man recording a voice sample in a warm, quiet room",
+    alt: "A man working with Indian language characters on a laptop",
     workflow: ["Set the brief", "Build language guidance", "Translate & review", "Deliver files"],
     inquiry: "Tell us your source and target languages, content type, audience, and style needs.",
     services: [
