@@ -8,53 +8,7 @@ import {
 import { TextReveal } from "@/components/text-reveal"
 import { FAQSection } from "@/components/faq-section"
 import { WorldMap } from "@/components/ui/world-map"
-import { servicePages } from "@/lib/service-pages"
-
-const offerings = [
-  {
-    title: "Visual data services",
-    image: "/images/data-work/annotation-review.jpg",
-    alt: "A data specialist reviewing labeled portrait examples",
-    serviceSlugs: ["ai-data-annotation"],
-    serviceLink: {
-      label: "AI data annotation & collection",
-      description:
-        "Human-reviewed image, video, text, audio, and 3D annotation, plus real-world data collection shaped to your use case.",
-    },
-  },
-  {
-    title: "Transcription and speech",
-    image: "/images/data-work/speech-collection.jpg",
-    alt: "An Assamese speaker recording a phrase with a language researcher",
-    serviceSlugs: ["transcription-and-speech"],
-  },
-  {
-    title: "Translation and localization",
-    image: "/images/data-work/language-localization.jpg",
-    alt: "Two language specialists reviewing a document together",
-    serviceSlugs: ["translation-and-localization"],
-  },
-  {
-    title: "OCR and document AI",
-    image: "/images/data-work/document-ai.jpg",
-    alt: "A document specialist reviewing structured fields in a scanned form",
-    serviceSlugs: ["ocr-and-document-ai"],
-  },
-  {
-    title: "Generative AI services",
-    image: "/images/data-work/generative-ai.jpg",
-    alt: "A human evaluator comparing two model responses on a monitor",
-    serviceSlugs: ["generative-ai-services"],
-  },
-  {
-    title: "AI model evaluation",
-    image: "/images/data-work/model-evaluation.jpg",
-    alt: "Two reviewers comparing model search results against human quality criteria",
-    serviceSlugs: ["ai-model-evaluation"],
-  },
-]
-
-const serviceBySlug = new Map(servicePages.map((service) => [service.slug, service]))
+import { serviceGroups } from "@/lib/service-pages"
 
 const checks = [
   {
@@ -126,40 +80,37 @@ export function HomeSections() {
             </TextReveal>
           </div>
           <TextReveal as="p" delay={0.15} className="home-lead">
-            Data collection, annotation, and review for images, speech, text,
-            and documents.
+              From human-sourced data to precise labels, language, and model-ready examples.
           </TextReveal>
         </div>
         <div className="expertise-grid">
-          {offerings.map((offering, index) => (
+          {serviceGroups.map((group, index) => (
             <TextReveal
               as="article"
               effect="image"
               delay={index * 0.1}
-              key={offering.title}
-              className={`expertise-item${offering.title === "Translation and localization" ? " expertise-item--single-line-title" : ""}`}
+              key={group.id}
+              className="expertise-item"
             >
               <div className="expertise-image">
                 <Image
-                  src={offering.image}
-                  alt={offering.alt}
+                  src={group.image}
+                  alt={group.alt}
                   fill
                   sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 30vw"
                   className="object-cover"
                 />
               </div>
-              <h3>{offering.title}</h3>
+              <h3>{group.label}</h3>
+              <p>{group.description}</p>
               <ul>
-                {offering.serviceSlugs.map((slug) => {
-                  const service = serviceBySlug.get(slug)
-                  if (!service) return null
-                  const href = `/services/${service.slug}`
+                {group.services.slice(0, 2).map((service) => {
                   return (
                     <li key={service.slug}>
-                    <Link href={href}>
+                    <Link href={`/services/${service.slug}`}>
                       <span>
-                        <strong>{offering.serviceLink?.label ?? service.label}</strong>
-                        <small>{offering.serviceLink?.description ?? service.description}</small>
+                        <strong>{service.label}</strong>
+                        <small>{service.description}</small>
                       </span>
                       <IconArrowUpRight aria-hidden="true" />
                     </Link>

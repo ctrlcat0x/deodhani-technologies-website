@@ -17,18 +17,11 @@ const groups = [
   {
     title: "Data products",
     links: [
-      ["AI data annotation", "/services/ai-data-annotation"],
-      ["Transcription & speech", "/services/transcription-and-speech"],
-      ["Translation & localization", "/services/translation-and-localization"],
-      ["OCR & document AI", "/services/ocr-and-document-ai"],
-    ],
-  },
-  {
-    title: "Solutions",
-    links: [
-      ["Generative AI services", "/services/generative-ai-services"],
-      ["Data collection", "/services/data-collection"],
-      ["AI model evaluation", "/services/ai-model-evaluation"],
+      ["Data collection", "/services/human-data-collection"],
+      ["Transcription", "/services/general-transcription"],
+      ["Annotation", "/services/image-annotation"],
+      ["Generative AI services", "/services/prompt-creation-and-response"],
+      ["Translation", "/services/multilingual-indian-language-translation"],
     ],
   },
   {

@@ -529,7 +529,7 @@ header nav[aria-label="Main navigation"] {
 }
 .expertise-image {
   position: relative;
-  aspect-ratio: 1.15;
+  aspect-ratio: 1.5;
   border-radius: 16px;
   overflow: hidden;
   background: var(--secondary);
@@ -780,7 +780,7 @@ main img {
   .expertise-image {
     height: auto;
     min-height: 0;
-    aspect-ratio: 1.25;
+    aspect-ratio: 1.5;
   }
   .expertise-item h3 { margin-top: 22px; }
   .expertise-item > p {

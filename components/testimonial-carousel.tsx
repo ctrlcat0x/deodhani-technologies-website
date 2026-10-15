@@ -1,48 +1,51 @@
-import {
-  IconBrandApple,
-  IconBrandGoogle,
-  IconBrandMercedes,
-} from "@tabler/icons-react"
+import Image from "next/image"
 import { InfiniteSlider } from "@/components/ui/infinite-slider"
 
 const testimonials = [
   {
-    quote:
-      "Consistent labels helped our team focus on the next stage of our computer vision model.",
+    quote: "The team helped us turn complex visual data into clear, consistent labels.",
     role: "Computer vision team",
     company: "Google",
-    Logo: IconBrandGoogle,
-    logoStyle: "bg-white text-[#4285f4]",
+    logo: "/images/companies/google.svg",
+    logoStyle: "bg-white",
   },
   {
-    quote:
-      "Human review brought the language and context our training data was missing.",
-    role: "Language AI team",
+    quote: "Careful annotation helped us bring greater consistency to our vehicle data.",
+    role: "Automotive AI team",
     company: "Mercedes-Benz",
-    Logo: IconBrandMercedes,
-    logoStyle: "bg-[#f2f5f8] text-[#172b4d]",
+    logo: "/images/companies/mercedes-benz.png",
+    logoStyle: "bg-white",
+    logoTextStyle: "text-foreground",
   },
   {
-    quote:
-      "A thoughtful approach to speech data, from collection through transcription and review.",
+    quote: "Thoughtful review made our speech data more accurate and useful.",
     role: "Speech technology team",
     company: "Apple",
-    Logo: IconBrandApple,
-    logoStyle: "bg-[#f4f4f4] text-[#252525]",
+    logo: "/images/companies/apple.svg",
+    logoStyle: "bg-[#252525]",
+    logoTextStyle: "text-white",
   },
   {
-    quote:
-      "Human review brought the language and context our training data was missing.",
+    quote: "Reliable data collection gave our AI projects a strong place to start.",
+    role: "AI data team",
+    company: "Firecrawl",
+    logo: "/images/companies/firecrawl.svg",
+    logoStyle: "bg-[#171717]",
+    logoTextStyle: "text-white",
+  },
+  {
+    quote: "Their care with language and context helped us build better datasets.",
     role: "Language AI team",
     company: "TELUS Digital",
-    logoStyle: "bg-[#f2f8f8] text-[#4b286d]",
+    logo: "/images/companies/telus-digital.png",
+    logoStyle: "bg-white",
   },
   {
-    quote:
-      "A thoughtful approach to speech data, from collection through transcription and review.",
-    role: "Speech technology team",
+    quote: "Clear communication and careful checks kept every batch on track.",
+    role: "Data operations team",
     company: "Appen",
-    logoStyle: "bg-[#f4f7fb] text-[#276db4]",
+    logo: "/images/companies/appen.png",
+    logoStyle: "bg-white",
   },
 ]
 
@@ -67,12 +70,12 @@ export function TestimonialCarousel() {
             </h2>
           </div>
           <p className="max-w-lg text-sm leading-relaxed text-muted-foreground">
-            Example stories shown for illustration; company marks are visual
-            references.
+            Sample testimonial drafts for illustration; they are not client
+            endorsements.
           </p>
         </div>
         <InfiniteSlider gap={24} speed={32} speedOnHover={0} className="py-2">
-          {testimonials.map(({ quote, role, company, Logo, logoStyle }) => (
+          {testimonials.map(({ quote, role, company, logo, logoStyle, logoTextStyle }) => (
             <article
               key={company}
               className="flex h-[300px] w-[min(82vw,620px)] items-stretch overflow-hidden rounded-2xl border border-border bg-card sm:h-[340px]"
@@ -81,8 +84,20 @@ export function TestimonialCarousel() {
                 aria-hidden="true"
                 className={`flex w-[36%] shrink-0 flex-col items-center justify-center gap-4 px-3 ${logoStyle}`}
               >
-                {Logo ? <Logo className="size-14 sm:size-[4.5rem]" stroke={1.5} /> : <span className="text-2xl font-semibold tracking-tight">TELUS</span>}
-                <span className="text-center text-xs font-semibold leading-tight sm:text-sm">{company}</span>
+                <Image
+                  src={logo}
+                  alt=""
+                  aria-hidden="true"
+                  width={150}
+                  height={64}
+                  className="h-auto max-h-16 w-auto max-w-full object-contain"
+                  unoptimized
+                />
+                {["Apple", "Mercedes-Benz", "Firecrawl"].includes(company) && (
+                  <span className={`text-center text-xs font-semibold leading-tight sm:text-sm ${logoTextStyle}`}>
+                    {company}
+                  </span>
+                )}
               </div>
               <div className="flex min-w-0 flex-1 flex-col justify-center gap-5 p-5 sm:gap-7 sm:p-7 lg:p-8">
                 <blockquote className="text-base leading-relaxed font-medium text-pretty sm:text-lg lg:text-xl">
@@ -91,7 +106,7 @@ export function TestimonialCarousel() {
                 <div>
                   <p className="text-sm font-semibold sm:text-base">{role}</p>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Illustrative testimonial · no client attribution
+                    Illustrative example · not a client quote
                   </p>
                 </div>
               </div>

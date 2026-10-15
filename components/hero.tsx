@@ -9,6 +9,12 @@ import { TextReveal } from "@/components/text-reveal"
 
 const samples = [
   {
+    src: "/images/hero-assamese-speaker.png",
+    alt: "Assamese woman recording speech outdoors",
+    title: "Voices from every community",
+    subtitle: "Speech collection",
+  },
+  {
     src: "/images/hero img (1).svg",
     alt: "Audio annotation visualization",
     title: "Every voice has a story",

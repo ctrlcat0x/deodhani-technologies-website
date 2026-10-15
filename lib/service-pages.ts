@@ -1,339 +1,208 @@
-export const servicePages = [
+const groups = [
   {
-    slug: "ai-data-annotation",
-    label: "AI data annotation",
-    title: "The right labels. A clearer picture.",
-    description:
-      "Give your models the context they need with human-reviewed image, video, text, audio, and 3D annotation. Start with your use case. Build a labeling workflow around it.",
-    image: "/images/data-work/annotation-review.jpg",
-    alt: "A data specialist reviewing labeled portrait examples",
-    caption:
-      "Computer vision in context: object boundaries, classes, and relationships in a street scene. Illustrative sample.",
-    topics: ["Image", "Video", "Text & NLP", "Audio", "3D"],
-    sections: [
-      {
-        title: "From pixels to a world your model can read.",
-        text: "Build consistent visual labels for detection, tracking, and scene understanding. Define the annotation guide, review ambiguous examples, and keep the labels aligned with your model’s task.",
-        image: "/images/data-work/face-segmentation.jpg",
-        alt: "An image reviewer checking segmentation boundaries around portrait subjects",
-        items: [
-          "Bounding boxes, polygons, segmentation, and keypoints",
-          "Video object tracking and frame-by-frame activity labels",
-          "3D cuboids and point-cloud annotation scoped to your tools",
-        ],
-      },
-      {
-        title: "Language, sound, and the meaning between them.",
-        text: "Turn unstructured conversations and documents into labeled examples. Clear taxonomies and human review help distinguish the intent, entities, and context that automated labeling can miss.",
-        image: "/images/data-work/model-evaluation.jpg",
-        alt: "Reviewers comparing model outputs on a monitor",
-        items: [
-          "Named entities, sentiment, intent, and text classification",
-          "Audio events, speaker segments, and speech labels",
-          "Guideline calibration, adjudication, and agreed export formats",
-        ],
-      },
-    ],
-    workflow: [
-      "Define your taxonomy",
-      "Calibrate a sample",
-      "Annotate & review",
-      "Deliver structured labels",
-    ],
-    inquiry:
-      "Share your data types, label taxonomy, approximate volume, and preferred annotation tools.",
-  },
-  {
-    slug: "transcription-and-speech",
-    label: "Transcription and speech",
-    title: "Every voice carries more than words.",
-    description:
-      "Make speech usable for your next application. Bring together transcription, voice collection, and speaker-aware data preparation for speech recognition and synthesis.",
-    image: "/images/data-work/speech-collection.jpg",
-    alt: "An Assamese speaker recording a phrase with a language researcher",
-    caption:
-      "Useful speech data preserves the words, speakers, and context of a recording. Illustrative photography.",
-    topics: [
-      "Transcription",
-      "Voice collection",
-      "Speech to text",
-      "Text to speech",
-      "Diarization",
-    ],
-    sections: [
-      {
-        title: "Transcripts that preserve the conversation.",
-        text: "Choose verbatim or edited transcripts to suit your application. Align words with audio and identify speaker changes so your dataset reflects how people actually communicate.",
-        image: "/images/data-work/speech-collection.jpg",
-        alt: "A speaker recording a phrase while a language researcher monitors the session",
-        items: [
-          "Speech-to-text transcription and timestamp alignment",
-          "Speaker diarization and conversational turn labeling",
-          "Review of accents, background noise, and unclear segments",
-        ],
-      },
-      {
-        title: "Collect the voices your application needs.",
-        text: "Plan voice recordings around your language, speaker, and acoustic requirements. A defined recording brief helps create consistent material for speech recognition and text-to-speech development.",
-        image: "/images/data-work/face-video.jpg",
-        alt: "A participant recording a short video sample on a smartphone",
-        items: [
-          "Scripted and conversational voice collection",
-          "Pronunciation and transcript review for TTS datasets",
-          "Speaker consent, recording checks, and delivery specifications",
-        ],
-      },
-    ],
-    workflow: [
-      "Define language & speakers",
-      "Record or ingest",
-      "Transcribe & align",
-      "Review & deliver",
-    ],
-    inquiry:
-      "Tell us your languages, recording hours, transcript format, and speaker requirements.",
-  },
-  {
-    slug: "translation-and-localization",
-    label: "Translation and localization",
-    title: "Meaning travels. Make sure it arrives.",
-    description:
-      "Connect with people in their own language. Translate and adapt content with attention to terminology, local context, and the way your audience reads and speaks.",
-    image: "/images/data-work/language-localization.jpg",
-    alt: "Two language specialists reviewing a document together",
-    caption:
-      "The audience, subject, and purpose all shape the right choice of words. Illustrative photography.",
-    topics: [
-      "Translation",
-      "Localization",
-      "MT post-editing",
-      "Linguistic evaluation",
-    ],
-    sections: [
-      {
-        title: "More than a word-for-word translation.",
-        text: "Adapt documents, product content, and language datasets for the people who use them. Establish a glossary and style guide so terminology stays consistent across every touchpoint.",
-        image: "/images/data-work/language-localization.jpg",
-        alt: "Language specialists reviewing a document at a shared desk",
-        items: [
-          "Document and digital content translation",
-          "Product, interface, and cultural localization",
-          "Terminology management and bilingual review",
-        ],
-      },
-      {
-        title: "Give machine translation a human second look.",
-        text: "Review machine-generated translations against the source and the brief. Linguistic evaluation helps reveal meaning errors, awkward phrasing, and local conventions that automated metrics can overlook.",
-        image: "/images/data-work/model-evaluation.jpg",
-        alt: "Reviewers comparing model outputs and quality signals",
-        items: [
-          "Machine translation post-editing",
-          "Fluency, accuracy, and terminology evaluation",
-          "Error categorization and actionable language feedback",
-        ],
-      },
-    ],
-    workflow: [
-      "Agree the brief",
-      "Build a glossary",
-      "Translate & adapt",
-      "Review in context",
-    ],
-    inquiry:
-      "Share the language pairs, subject area, content volume, and localization needs.",
-  },
-  {
-    slug: "ocr-and-document-ai",
-    label: "OCR and document AI",
-    title: "Unlock what’s inside your documents.",
-    description:
-      "Turn scans, forms, and handwritten pages into structured information. Prepare document datasets that connect text with its layout, fields, and relationships.",
-    image: "/images/data-work/document-ai.jpg",
-    alt: "A document specialist reviewing structured fields in a scanned form",
-    caption:
-      "Document understanding connects text to structure: fields, tables, signatures, and reading order. Illustrative sample.",
-    topics: ["OCR", "Document annotation", "Data extraction", "Handwriting"],
-    sections: [
-      {
-        title: "Read the page. Understand the structure.",
-        text: "Document models need to know where information sits as well as what it says. Annotate text regions, layout elements, and reading order across forms, invoices, and other document types.",
-        image: "/images/data-work/document-ai.jpg",
-        alt: "A form specialist checking document fields on paper and screen",
-        items: [
-          "Text bounding boxes and transcription for OCR",
-          "Table, paragraph, heading, and signature regions",
-          "Key-value pairs and document classification",
-        ],
-      },
-      {
-        title: "Make difficult documents useful.",
-        text: "Build review steps for handwritten entries, low-quality scans, and changing layouts. Capture uncertainty in the annotation guide instead of forcing an unreliable label.",
-        image: "/images/data-work/annotation-review.jpg",
-        alt: "A data specialist reviewing visual labels on a monitor",
-        items: [
-          "Handwriting transcription and field extraction",
-          "Exception handling for illegible or incomplete content",
-          "Schema checks and structured export preparation",
-        ],
-      },
-    ],
-    workflow: [
-      "Define document types",
-      "Set the schema",
-      "Extract & annotate",
-      "Validate the output",
-    ],
-    inquiry:
-      "Describe your document types, languages, sample layouts, and required output schema.",
-  },
-  {
-    slug: "generative-ai-services",
-    label: "Generative AI services",
-    title: "Better answers begin with human judgment.",
-    description:
-      "Bring human expertise into the generative AI lifecycle. Develop supervised examples, preference data, and evaluation workflows around the behavior you want from your model.",
-    image: "/images/data-work/generative-ai.jpg",
-    alt: "A human evaluator comparing two model responses on a monitor",
-    caption:
-      "Human feedback adds context, from instruction examples to response preferences. Illustrative photography.",
-    topics: [
-      "LLM evaluation",
-      "RLHF",
-      "Supervised fine-tuning",
-      "Prompt evaluation",
-      "AI safety",
-    ],
-    sections: [
-      {
-        title: "Teach with examples. Refine with preferences.",
-        text: "Prepare task-specific instruction and response pairs for supervised fine-tuning. Collect human preference judgments using a rubric that makes helpfulness, relevance, and clarity explicit.",
-        image: "/images/data-work/generative-ai.jpg",
-        alt: "A human evaluator selecting a preferred model response",
-        items: [
-          "Instruction writing and supervised fine-tuning data",
-          "Response ranking and RLHF preference annotation",
-          "Reviewer calibration and disagreement resolution",
-        ],
-      },
-      {
-        title: "Evaluate what your model says—and how it says it.",
-        text: "Test prompts and responses against the intended use case. Human review helps identify unsupported statements, instruction-following failures, and safety concerns before they become user experiences.",
-        image: "/images/data-work/model-evaluation.jpg",
-        alt: "Reviewers checking model results against evaluation criteria",
-        items: [
-          "Prompt and response evaluation against defined rubrics",
-          "Factuality, helpfulness, and instruction-following review",
-          "Safety evaluation and documented failure categories",
-        ],
-      },
-    ],
-    workflow: [
-      "Define target behavior",
-      "Calibrate reviewers",
-      "Create & evaluate",
-      "Return usable feedback",
-    ],
-    inquiry:
-      "Tell us your model use case, evaluation rubric, subject expertise, and preferred data format.",
-  },
-  {
-    slug: "data-collection",
+    id: "data-collection",
     label: "Data collection",
-    title: "Real-world data. For real-world intelligence.",
     description:
-      "Source the voices, images, video, and text that reflect your use case. Plan a collection around your audience, environment, and model requirements.",
-    image: "/images/data-work/field-collection.jpg",
-    alt: "A field researcher using a smartphone to capture a plant sample",
-    caption:
-      "A useful dataset reflects the environments where a model will operate. Collection starts with a clear brief. Illustrative photography.",
-    topics: [
-      "Voice",
-      "Image & video",
-      "Text",
-      "Multilingual",
-      "Field & mobile",
-      "Expert data",
-    ],
-    sections: [
+      "Collect the voices, documents, images, and video your AI needs, with clear contributor guidance and quality checks from the start.",
+    image: "/images/services/data-collection.png",
+    alt: "A diverse group of people represented in a connected data collection",
+    workflow: ["Set the brief", "Prepare contributors", "Collect data", "Review & deliver"],
+    inquiry: "Tell us about your data type, participant criteria, languages, and target volume.",
+    services: [
       {
-        title: "Capture the variety your model will meet.",
-        text: "Define the devices, environments, and scenarios your collection should cover. Build a brief with clear acceptance criteria so contributors know what to capture and reviewers know what to check.",
-        image: "/images/data-work/face-video.jpg",
-        alt: "A participant recording a short video sample on a smartphone",
-        items: [
-          "Image, video, voice, and text collection",
-          "Field and mobile capture across defined scenarios",
-          "Multilingual collection with agreed consent requirements",
-        ],
+        slug: "human-data-collection",
+        label: "Human Data Collection",
+        title: "Real people. Relevant data.",
+        description: "Gather human-created examples for the tasks your model must handle. We plan contributor criteria, instructions, and review around your intended use.",
+        includes: ["Participant and sample criteria", "Clear capture instructions and consent flow", "Metadata, duplicate, and quality checks"],
       },
       {
-        title: "Human perspectives belong in the dataset.",
-        text: "Some tasks need more than raw recordings. Source expert-written examples, human preferences, and contextual judgments to support the decisions your model needs to make.",
-        image: "/images/data-work/field-collection.jpg",
-        alt: "A field researcher capturing a real-world plant sample",
-        items: [
-          "Human preference and comparative response data",
-          "Domain-informed examples and expert contributions",
-          "Metadata, duplicate checks, and acceptance review",
-        ],
+        slug: "text-to-speech-data-collection",
+        label: "Text-to-Speech (TTS) Data Collection",
+        title: "Build a voice that sounds natural.",
+        description: "Collect speech paired with approved scripts to support expressive, consistent text-to-speech systems. Capture the pronunciation and recording conditions your voice model needs.",
+        includes: ["Script and pronunciation preparation", "Voice talent and recording sessions", "Audio, transcript, and speaker checks"],
+      },
+      {
+        slug: "multilingual-voice-data-collection",
+        label: "Multilingual Voice Data Collection",
+        title: "Hear more languages in your data.",
+        description: "Collect speech across selected Indian and global languages, accents, and speaking styles. Each recording follows a shared brief while respecting language-specific guidance.",
+        includes: ["Language and speaker coverage planning", "Natural speech and prompted recordings", "Transcription, metadata, and audio review"],
+      },
+      {
+        slug: "multilingual-documents-data-collection",
+        label: "Multilingual Documents Data Collection",
+        title: "Bring real-world documents into view.",
+        description: "Source document samples across agreed languages, layouts, and capture conditions. Organize each sample with the context and provenance needed for responsible model development.",
+        includes: ["Document and language coverage plan", "Scanned, photographed, or digital samples", "Source tracking and legibility checks"],
+      },
+      {
+        slug: "automobile-data-collection",
+        label: "Automobile Data Collection",
+        title: "Capture the road as systems see it.",
+        description: "Collect vehicle and road-scene data around the environments, conditions, and events your application must understand. Define capture and review criteria before each collection run.",
+        includes: ["Road, vehicle, and scenario requirements", "Image, video, or sensor-data capture", "Coverage, safety, and quality review"],
+      },
+      {
+        slug: "video-data-collection",
+        label: "Video Data Collection",
+        title: "Collect the moments between frames.",
+        description: "Build video datasets around the people, objects, actions, and settings that matter to your model. Consistent capture briefs help contributors produce usable footage across scenarios.",
+        includes: ["Scene, action, and camera requirements", "Contributor-guided video capture", "Duration, clarity, and coverage checks"],
       },
     ],
-    workflow: [
-      "Scope the collection",
-      "Brief contributors",
-      "Capture & check",
-      "Package the dataset",
-    ],
-    inquiry:
-      "Share the data modalities, participant criteria, locations, volumes, and usage requirements.",
   },
   {
-    slug: "ai-model-evaluation",
-    label: "AI model evaluation",
-    title: "See your model through human eyes.",
+    id: "transcription",
+    label: "Transcription",
     description:
-      "Understand where your AI works—and where it needs work. Evaluate search results, chatbot conversations, and model responses with task-specific human review.",
-    image: "/images/data-work/model-evaluation.jpg",
-    alt: "Two reviewers evaluating model search results together",
-    caption:
-      "Evaluation becomes useful when every judgment connects to a defined quality criterion. Illustrative photography.",
-    topics: [
-      "Search relevance",
-      "Chatbot evaluation",
-      "Response quality",
-      "Bias & safety",
-    ],
-    sections: [
+      "Turn recorded speech into dependable text, with the terminology, timestamps, and speaker detail each project needs.",
+    image: "/images/services/transcription.png",
+    alt: "A woman listening closely to audio while working at a laptop",
+    workflow: ["Share audio & rules", "Transcribe", "Review details", "Deliver files"],
+    inquiry: "Share your audio format, language, subject area, and transcript requirements.",
+    services: [
       {
-        title: "Measure the experience behind the output.",
-        text: "A technically valid answer can still miss the point. Review outputs against the user’s intent and the context of the task to understand relevance, usefulness, and conversational quality.",
-        image: "/images/data-work/generative-ai.jpg",
-        alt: "A reviewer assessing two model responses",
-        items: [
-          "Search relevance and query-result judgments",
-          "Chatbot task completion and conversation review",
-          "Response accuracy, clarity, and helpfulness",
-        ],
+        slug: "general-transcription",
+        label: "General Transcription",
+        title: "Clear transcripts, ready to use.",
+        description: "Convert interviews, meetings, and everyday recordings into readable, consistent transcripts. Choose verbatim or clean-read formatting to fit your workflow.",
+        includes: ["Verbatim or clean-read transcripts", "Speaker names and timestamps when requested", "Spelling, formatting, and completeness review"],
       },
       {
-        title: "Turn failure cases into a clearer next step.",
-        text: "Use a documented rubric to review bias, unsafe responses, and inconsistent behavior. Record the reason behind each judgment so findings can inform model and dataset improvements.",
-        image: "/images/data-work/annotation-review.jpg",
-        alt: "A data specialist reviewing examples and annotation decisions",
-        items: [
-          "Bias and safety assessment within an agreed scope",
-          "Edge-case review and failure categorization",
-          "Reviewer agreement checks and structured findings",
-        ],
+        slug: "medical-transcription",
+        label: "Medical Transcription",
+        title: "Handle clinical language with care.",
+        description: "Transcribe clinical audio using project-approved terminology and formatting rules. Clear escalation steps keep uncertain terms visible for qualified review.",
+        includes: ["Clinical terminology and style guides", "Structured notes or narrative transcripts", "Confidential handling and uncertainty flags"],
+      },
+      {
+        slug: "legal-transcription",
+        label: "Legal Transcription",
+        title: "Keep every speaker and detail clear.",
+        description: "Create accurate transcripts from legal proceedings, interviews, and recorded statements. Preserve speaker turns and project-specified notation for review and reference.",
+        includes: ["Speaker identification and turn formatting", "Timestamps and inaudible-speech notation", "Consistent names, terms, and document style"],
+      },
+      {
+        slug: "captioning-and-subtitling",
+        label: "Captioning & Subtitling",
+        title: "Make spoken content easier to follow.",
+        description: "Prepare synchronized captions and subtitles that keep speech readable on screen. Follow your timing, line-length, speaker-label, and language requirements.",
+        includes: ["Timed captions and subtitle files", "Speaker labels and relevant sound cues", "Readability, sync, and format checks"],
       },
     ],
-    workflow: [
-      "Define success criteria",
-      "Select evaluation tasks",
-      "Review & adjudicate",
-      "Report actionable findings",
-    ],
-    inquiry:
-      "Describe your application, evaluation criteria, sample outputs, and target audiences.",
   },
-]
+  {
+    id: "annotation",
+    label: "Annotation",
+    description:
+      "Give training data useful structure with carefully defined labels, consistent review, and exports that fit your pipeline.",
+    image: "/images/services/annotation.png",
+    alt: "A diverse grid of people shown in an image annotation review",
+    workflow: ["Define labels", "Calibrate a sample", "Annotate & review", "Export data"],
+    inquiry: "Tell us about your data format, annotation schema, tools, and expected volume.",
+    services: [
+      {
+        slug: "image-annotation",
+        label: "Image Annotation",
+        title: "Turn pixels into useful labels.",
+        description: "Mark the objects, regions, and details your vision model needs to learn. Annotation rules and sample review keep labels consistent across a dataset.",
+        includes: ["Bounding boxes, polygons, and segmentation", "Classification, keypoints, and attributes", "Guideline calibration and edge-case review"],
+      },
+      {
+        slug: "video-annotation",
+        label: "Video Annotation",
+        title: "Follow objects and actions through time.",
+        description: "Annotate video frames with labels that preserve movement and continuity. Define frame sampling, tracking rules, and event boundaries around your task.",
+        includes: ["Frame-level objects and attributes", "Object tracking across selected frames", "Actions, events, and temporal segments"],
+      },
+      {
+        slug: "text-annotation",
+        label: "Text Annotation",
+        title: "Make language easier for models to understand.",
+        description: "Organize documents and conversations with a clear text taxonomy. Human review helps resolve ambiguous wording and apply labels consistently.",
+        includes: ["Entities, intent, sentiment, and topics", "Classification and relationship labels", "Span rules and adjudication guidance"],
+      },
+      {
+        slug: "audio-annotation",
+        label: "Audio Annotation",
+        title: "Add structure to every sound.",
+        description: "Label speech and non-speech audio with the timing and context your models require. Capture speaker turns, sound events, and uncertain segments clearly.",
+        includes: ["Speaker and turn labels", "Word, phrase, or event timestamps", "Sound classes and acoustic attributes"],
+      },
+      {
+        slug: "ocr-annotation",
+        label: "OCR Annotation",
+        title: "Connect text to its place on the page.",
+        description: "Prepare image and document labels that help OCR systems read text and understand layout. Capture text regions alongside their order and structure.",
+        includes: ["Text transcription and bounding regions", "Reading order, tables, and key-value fields", "Handwriting and low-quality scan review"],
+      },
+      {
+        slug: "3d-annotation",
+        label: "3D Annotation",
+        title: "Label space in three dimensions.",
+        description: "Structure point clouds and 3D scenes with labels suited to perception tasks. Define object classes, box conventions, and review rules for consistent spatial data.",
+        includes: ["3D cuboids and object classes", "Point-cloud segmentation and attributes", "Coordinate, occlusion, and consistency checks"],
+      },
+      {
+        slug: "generative-ai-prompt-response-annotation",
+        label: "Generative AI Prompt and Response Annotation",
+        title: "Give model conversations useful structure.",
+        description: "Label prompts and generated responses against a shared rubric. Capture intent, quality, safety, and response traits so examples can support training and evaluation.",
+        includes: ["Prompt intent and response attributes", "Quality, safety, and policy labels", "Comparison judgments and rationale codes"],
+      },
+    ],
+  },
+  {
+    id: "generative-ai-services",
+    label: "Generative AI Services",
+    description:
+      "Develop prompt and response examples with human insight, practical rubrics, and consistent checks for quality and usefulness.",
+    image: "/images/services/video-data.png",
+    alt: "A person recording a smartphone response in a low-lit setting",
+    workflow: ["Set the goal", "Write examples", "Review responses", "Refine the set"],
+    inquiry: "Share your use case, model behavior goals, response format, and review criteria.",
+    services: [
+      {
+        slug: "prompt-creation-and-response",
+        label: "Prompt Creation & Response",
+        title: "Create examples that guide better answers.",
+        description: "Develop realistic prompts and quality-checked responses for your target use cases. Each example follows your tone, format, and behavior guidance.",
+        includes: ["Prompt sets across defined tasks", "Reference responses with clear rationale", "Coverage, consistency, and quality review"],
+      },
+      {
+        slug: "prompt-response-dataset-creation",
+        label: "Prompt-Response Dataset Creation",
+        title: "Build a dataset around the behavior you want.",
+        description: "Create structured prompt-response pairs for supervised fine-tuning and evaluation. Track useful metadata and apply a repeatable review process from draft to delivery.",
+        includes: ["Schema-led prompt and response pairs", "Positive, negative, and edge-case examples", "Deduplication, validation, and export checks"],
+      },
+    ],
+  },
+  {
+    id: "translation",
+    label: "Translation",
+    description:
+      "Carry meaning across Indian languages with attention to context, terminology, and the way people naturally speak and read.",
+    image: "/images/services/voice-capture.png",
+    alt: "A man recording a voice sample in a warm, quiet room",
+    workflow: ["Set the brief", "Build language guidance", "Translate & review", "Deliver files"],
+    inquiry: "Tell us your source and target languages, content type, audience, and style needs.",
+    services: [
+      {
+        slug: "multilingual-indian-language-translation",
+        label: "Multilingual Indian Language Translation",
+        title: "Make every version feel at home.",
+        description: "Translate content between Indian languages while preserving intent, tone, and local context. Shared terminology and bilingual review help each version read naturally.",
+        includes: ["Translation across selected Indian languages", "Terminology and style-guide alignment", "Bilingual review and issue resolution"],
+      },
+    ],
+  },
+] as const
+
+export const serviceGroups = groups
+
+export const servicePages = serviceGroups.flatMap((group) =>
+  group.services.map((service) => ({ ...service, category: group.label, groupId: group.id, image: group.image, alt: group.alt, workflow: group.workflow, inquiry: group.inquiry }))
+)
