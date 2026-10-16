@@ -665,10 +665,10 @@ header nav[aria-label="Main navigation"] {
   padding-block: clamp(40px, 3.5vw, 56px);
 }
 .quality-intro {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 32px;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  align-items: end;
+  gap: clamp(24px, 4vw, 60px);
   margin-bottom: 24px;
 }
 .quality-intro .home-lead {
@@ -677,7 +677,7 @@ header nav[aria-label="Main navigation"] {
 }
 .quality-content {
   display: grid;
-  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   align-items: start;
   gap: clamp(24px, 4vw, 60px);
 }
