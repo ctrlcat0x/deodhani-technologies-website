@@ -1,13 +1,15 @@
 "use client"
 import { useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Dialog } from "@base-ui/react/dialog"
-import { IconX, IconMenu2 } from "@tabler/icons-react"
+import { IconX, IconMenu2, IconHome } from "@tabler/icons-react"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { companyLinks, serviceLinks } from "@/components/nav-links"
 import { LinkItem } from "@/components/sheard"
 export function MobileNav() {
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger
@@ -42,6 +44,15 @@ export function MobileNav() {
             </Dialog.Close>
           </div>
           <nav aria-label="Mobile navigation">
+            {pathname !== "/" && (
+              <LinkItem
+                label="Home"
+                href="/"
+                description="Back to the homepage"
+                icon={<IconHome aria-hidden="true" />}
+                onClick={() => setOpen(false)}
+              />
+            )}
             <h2 className="mt-5 mb-2.5 text-xs text-muted-foreground">
               Services
             </h2>
