@@ -404,9 +404,9 @@ header nav[aria-label="Main navigation"] {
 }
 .quality-image video {
   display: block;
-  width: min(100%, 500px);
+  width: 100%;
   height: auto;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
 }
 .method-step {
@@ -682,8 +682,6 @@ header nav[aria-label="Main navigation"] {
   gap: clamp(24px, 4vw, 60px);
 }
 .quality-image {
-  display: flex;
-  justify-content: center;
   margin-top: 16px;
 }
 .quality-checks {
@@ -986,6 +984,7 @@ main img {
   }
   .quality-content {
     grid-template-columns: minmax(0, 1fr);
+    align-items: start;
   }
   .quality-intro {
     display: block;
