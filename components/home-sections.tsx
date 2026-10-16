@@ -22,7 +22,7 @@ const checks = [
     text: "Review the material, add useful labels, and resolve unclear examples against the project guidelines.",
   },
   {
-    title: "Clean data",
+    title: "Handover cleaned dataset",
     text: "Deliver a consistent, checked dataset that is ready for your next step.",
   },
 ]

@@ -406,7 +406,7 @@ header nav[aria-label="Main navigation"] {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 9 / 16;
   object-fit: cover;
 }
 .method-step {
@@ -678,10 +678,11 @@ header nav[aria-label="Main navigation"] {
 .quality-content {
   display: grid;
   grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
-  align-items: end;
+  align-items: start;
   gap: clamp(24px, 4vw, 60px);
 }
 .quality-image {
+  width: min(100%, 340px);
   margin-top: 16px;
 }
 .quality-checks {
