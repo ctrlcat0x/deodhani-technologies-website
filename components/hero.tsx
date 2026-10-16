@@ -45,13 +45,13 @@ const samples = [
     subtitle: "Industrial vision",
   },
   {
-    src: "/images/hero img (1).webp",
+    src: "/images/hero img.jpeg",
     alt: "Leaf annotated to identify necrosis",
     title: "Grounded in the real world",
     subtitle: "Image segmentation",
   },
   {
-    src: "/images/hero img (2).webp",
+    src: "/images/hero img (2).jpeg",
     alt: "LiDAR point cloud with vehicle bounding boxes",
     title: "A new dimension",
     subtitle: "3D annotation",
