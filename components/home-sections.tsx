@@ -156,19 +156,13 @@ export function HomeSections() {
                 How we provide <br/> quality data
               </TextReveal>
             </div>
-            <TextReveal as="p" delay={0.12} className="home-lead">
+            <TextReveal as="p" delay={0.12} className="home-lead mr-24">
               We collect, clean, analyse, and annotate data, then review the
               final dataset for consistency.
             </TextReveal>
           </div>
           <div className="quality-content">
             <div className="quality-copy">
-              <TextReveal as="div" delay={0.2}>
-                <Link href="/contact#inquiry" className="home-text-link">
-                  Discuss your quality requirements{" "}
-                  <IconArrowUpRight aria-hidden="true" />
-                </Link>
-              </TextReveal>
               <TextReveal
                 as="figure"
                 effect="image"
