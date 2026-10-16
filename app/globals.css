@@ -336,7 +336,7 @@ header nav[aria-label="Main navigation"] {
 }
 .home-label {
   margin-bottom: 16px;
-  font-size: 13px;
+  font-size: 16px;
   color: var(--primary);
 }
 .home-heading {
