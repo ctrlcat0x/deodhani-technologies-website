@@ -6,6 +6,7 @@ import { PageIntro } from "@/components/page-intro"
 import { buttonVariants } from "@/components/ui/button"
 import { TextReveal } from "@/components/text-reveal"
 import { serviceGroups, servicePages } from "@/lib/service-pages"
+import { publicPageHref } from "@/lib/public-pages"
 
 export function generateStaticParams() {
   return servicePages.map(({ slug }) => ({ slug }))
@@ -97,11 +98,28 @@ export default async function ServicePage({
           <div className="flex flex-wrap gap-x-7 gap-y-4">
             {group.services
               .filter((item) => item.slug !== slug)
-              .map((item) => (
-                <Link key={item.slug} href={`/services/${item.slug}`} className="text-sm text-primary underline-offset-4 hover:underline">
-                  {item.label}
-                </Link>
-              ))}
+              .map((item) => {
+                const href = publicPageHref(`/services/${item.slug}`)
+                return (
+                  href ? (
+                    <Link
+                      key={item.slug}
+                      href={href}
+                      className="text-sm text-primary underline-offset-4 hover:underline"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <span
+                      key={item.slug}
+                      aria-disabled="true"
+                      className="text-sm text-primary underline-offset-4 opacity-55"
+                    >
+                      {item.label}
+                    </span>
+                  )
+                )
+              })}
           </div>
         </TextReveal>
       </div>

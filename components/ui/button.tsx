@@ -7,8 +7,6 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        whatsapp:
-          "bg-whatsapp text-whatsapp-foreground shadow-lg hover:bg-whatsapp/90 focus-visible:ring-whatsapp/50",
         default: "bg-primary text-primary-foreground hover:brightness-95",
         outline:
           "border-border bg-background text-foreground shadow-xs hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
@@ -21,8 +19,6 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        whatsapp:
-          "size-14 rounded-full motion-safe:hover:scale-105 motion-safe:active:scale-95 motion-reduce:transition-none [&_svg:not([class*='size-'])]:size-7",
         cta: "h-[50px] gap-6 rounded-[7px] px-[22px] text-[13px] duration-200 hover:shadow-md hover:shadow-foreground/10 active:shadow-none motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 motion-safe:active:scale-[0.98] motion-reduce:transition-none max-[700px]:h-12 max-[700px]:gap-4 max-[700px]:px-4 max-[700px]:text-xs [&_svg]:transition-transform motion-safe:hover:[&_svg]:translate-x-0.5 motion-safe:hover:[&_svg]:-translate-y-0.5 motion-reduce:[&_svg]:transition-none",
         header:
           "h-[50px] gap-6 rounded-[7px] px-[22px] text-[13px] duration-200 hover:shadow-md hover:shadow-foreground/10 active:shadow-none motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 motion-safe:active:scale-[0.98] motion-reduce:transition-none max-[1100px]:gap-3 max-[1100px]:px-4 max-[700px]:h-[42px] max-[700px]:px-[13px] max-[700px]:text-[11px] [&_svg]:transition-transform motion-safe:hover:[&_svg]:translate-x-0.5 motion-safe:hover:[&_svg]:-translate-y-0.5 motion-reduce:[&_svg]:transition-none",

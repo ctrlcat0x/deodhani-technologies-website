@@ -84,21 +84,13 @@ export default function ContactPage() {
                 aria-hidden="true"
               />
               <TextReveal as="h3" className="text-base font-medium">
-                Phone & WhatsApp
+                Phone
               </TextReveal>
               <a
                 href={`tel:${company.phone.replace(/\s/g, "")}`}
                 className="mt-3 inline-block text-sm text-primary underline-offset-4 hover:underline"
               >
                 {company.phone}
-              </a>
-              <a
-                href={`https://wa.me/${company.whatsappNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 block text-sm text-primary underline-offset-4 hover:underline"
-              >
-                Chat on WhatsApp
               </a>
             </TextReveal>
             <TextReveal as="div" className="py-7">

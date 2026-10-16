@@ -1,18 +1,15 @@
 import { TextReveal } from "@/components/text-reveal"
 import { company } from "@/lib/company"
 import Link from "next/link"
-import { publicPageHref } from "@/lib/public-pages"
 import {
   IconArrowUpRight,
   IconArrowUp,
   IconBrandLinkedin,
-  IconBrandFacebook,
-  IconBrandInstagram,
-  IconBrandX,
-  IconBrandYoutube,
+  IconMail,
 } from "@tabler/icons-react"
 import { Logo } from "@/components/logo"
 import { buttonVariants } from "@/components/ui/button"
+import { publicPageHref } from "@/lib/public-pages"
 const groups = [
   {
     title: "Data products",
@@ -35,11 +32,12 @@ const groups = [
   },
 ]
 const socialLinks = [
-  { label: "LinkedIn", icon: IconBrandLinkedin },
-  { label: "Facebook", icon: IconBrandFacebook },
-  { label: "Instagram", icon: IconBrandInstagram },
-  { label: "X", icon: IconBrandX },
-  { label: "YouTube", icon: IconBrandYoutube },
+  {
+    label: "LinkedIn",
+    icon: IconBrandLinkedin,
+    href: "https://in.linkedin.com/company/deodhanitechnologies",
+  },
+  { label: "Email", icon: IconMail, href: `mailto:${company.email}` },
 ]
 export function Footer() {
   return (
@@ -69,15 +67,18 @@ export function Footer() {
               heart of intelligent systems.
             </TextReveal>
             <nav
-              aria-label="Social media"
+              aria-label="Contact links"
               className="mt-5 flex flex-wrap gap-2"
             >
-              {socialLinks.map(({ label, icon: Icon }) => (
+              {socialLinks.map(({ label, icon: Icon, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
                   aria-label={label}
                   className="flex size-11 items-center justify-center rounded-full border border-footer-foreground/20 text-footer-link transition-colors hover:bg-footer-foreground/10 focus-visible:outline-footer-accent"
+                  {...(label === "LinkedIn"
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                 >
                   <Icon className="size-5" aria-hidden="true" />
                 </a>
@@ -98,18 +99,20 @@ export function Footer() {
               >
                 {group.title}
               </TextReveal>
-              {group.links.map(([label, href]) => (
-                <a
-                  href={publicPageHref(href)}
-                  role="link"
-                  aria-disabled={!publicPageHref(href) || undefined}
-                  tabIndex={publicPageHref(href) ? undefined : -1}
-                  key={label}
-                  className="text-sm leading-normal text-footer-link transition-colors hover:text-footer-accent hover:underline hover:underline-offset-4 motion-reduce:transition-none max-[700px]:text-xs"
-                >
-                  {label}
-                </a>
-              ))}
+              {group.links.map(([label, href]) => {
+                const pageHref = publicPageHref(href)
+                return (
+                  <a
+                    href={pageHref}
+                    aria-disabled={!pageHref || undefined}
+                    tabIndex={pageHref ? undefined : -1}
+                    key={label}
+                    className="text-sm leading-normal text-footer-link transition-colors hover:text-footer-accent hover:underline hover:underline-offset-4 motion-reduce:transition-none max-[700px]:text-xs"
+                  >
+                    {label}
+                  </a>
+                )
+              })}
             </TextReveal>
           ))}
         </div>

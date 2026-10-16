@@ -16,6 +16,7 @@ export function LinkItem({
   onClick,
   ...props
 }: React.ComponentProps<"a"> & LinkItemType) {
+  const pageHref = publicPageHref(href)
   return (
     <a
       className={cn(
@@ -23,11 +24,11 @@ export function LinkItem({
         className
       )}
       {...props}
-      href={publicPageHref(href)}
+      href={pageHref}
       role="link"
-      aria-disabled={!publicPageHref(href) || undefined}
-      tabIndex={publicPageHref(href) ? props.tabIndex : -1}
-      onClick={publicPageHref(href) ? onClick : undefined}
+      aria-disabled={!pageHref || undefined}
+      tabIndex={pageHref ? props.tabIndex : -1}
+      onClick={pageHref ? onClick : undefined}
     >
       <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-accent text-primary [&_svg]:size-5">
         {icon}
