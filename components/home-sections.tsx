@@ -11,19 +11,19 @@ import { publicPageHref } from "@/lib/public-pages"
 const checks = [
   {
     title: "Data collection",
-    text: "Gather relevant source material using clear project requirements and contributor guidance.",
+    text: "Gather relevant source material using clear project requirements, contributor guidance, and agreed capture standards before any labels are added.",
   },
   {
     title: "Cleaning",
-    text: "Remove duplicates, correct errors, and organize the raw data for analysis.",
+    text: "Remove duplicates, correct errors, and reorganize the raw data so every record is consistent, traceable, and ready for analysis.",
   },
   {
     title: "Analysing and annotating",
-    text: "Review the material, add useful labels, and resolve unclear examples against the project guidelines.",
+    text: "Review the material, add useful labels, and resolve unclear examples against the project guidelines and the decisions recorded during review.",
   },
   {
     title: "Handover cleaned dataset",
-    text: "Deliver a consistent, checked dataset that is ready for your next step.",
+    text: "Deliver a consistent, checked dataset with documented decisions, ready for training, evaluation, or the next round of review.",
   },
 ]
 

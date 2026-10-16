@@ -735,7 +735,7 @@ header nav[aria-label="Main navigation"] {
   color: var(--muted-foreground);
   font-size: 14px;
   line-height: 1.8;
-  max-width: 420px;
+  max-width: 620px;
 }
 .people-section {
   display: block;
