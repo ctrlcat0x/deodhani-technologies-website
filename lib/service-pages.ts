@@ -1,16 +1,35 @@
 const groups = [
   {
     id: "data-collection",
+    overviewTitle: "The right data starts with the right people.",
+    overviewDescription:
+      "Plan your collection around the voices, formats, and real-world situations your model needs to understand.",
     label: "Data collection",
     description:
       "Collect the voices, documents, images, and video your AI needs, with clear contributor guidance and quality checks from the start.",
     image: "/images/services/data-collection.png",
     alt: "Contributors capturing bus, street, and local market data",
     workflow: [
-      "Set the brief",
-      "Prepare contributors",
-      "Collect data",
-      "Review & deliver",
+      {
+        title: "Set the brief",
+        description:
+          "Agree on data types, coverage, sample criteria, and delivery format.",
+      },
+      {
+        title: "Prepare contributors",
+        description:
+          "Align participant selection, consent, and capture instructions.",
+      },
+      {
+        title: "Collect data",
+        description:
+          "Gather samples against the brief and track the required metadata.",
+      },
+      {
+        title: "Review & deliver",
+        description:
+          "Check quality and coverage, then organize the agreed delivery.",
+      },
     ],
     inquiry:
       "Tell us about your data type, participant criteria, languages, and target volume.",
@@ -91,16 +110,35 @@ const groups = [
   },
   {
     id: "transcription",
+    overviewTitle: "Every word, in the format you need.",
+    overviewDescription:
+      "From everyday conversations to specialist recordings, choose the transcript detail and structure that fit your work.",
     label: "Transcription",
     description:
       "Turn recorded speech into dependable text, with the terminology, timestamps, and speaker detail each project needs.",
     image: "/images/services/transcription.png",
     alt: "A woman listening closely to audio while working at a laptop",
     workflow: [
-      "Share audio & rules",
-      "Transcribe",
-      "Review details",
-      "Deliver files",
+      {
+        title: "Share audio & rules",
+        description:
+          "Confirm languages, audio quality, terminology, and transcript style.",
+      },
+      {
+        title: "Transcribe",
+        description:
+          "Capture speech with the agreed speaker labels and timestamps.",
+      },
+      {
+        title: "Review details",
+        description:
+          "Check names, specialist terms, and any unclear audio segments.",
+      },
+      {
+        title: "Deliver files",
+        description:
+          "Provide reviewed transcripts or captions in your chosen format.",
+      },
     ],
     inquiry:
       "Share your audio format, language, subject area, and transcript requirements.",
@@ -157,16 +195,35 @@ const groups = [
   },
   {
     id: "annotation",
+    overviewTitle: "Clear labels. Useful training data.",
+    overviewDescription:
+      "Give each data type the structure it needs, with shared guidelines and human review built into the work.",
     label: "Annotation",
     description:
       "Give training data useful structure with carefully defined labels, consistent review, and exports that fit your pipeline.",
     image: "/images/services/annotation.png",
     alt: "A diverse grid of people shown in an image annotation review",
     workflow: [
-      "Define labels",
-      "Calibrate a sample",
-      "Annotate & review",
-      "Export data",
+      {
+        title: "Define labels",
+        description:
+          "Agree on the taxonomy, attributes, edge cases, and export schema.",
+      },
+      {
+        title: "Calibrate a sample",
+        description:
+          "Review a small sample together to align labeling decisions.",
+      },
+      {
+        title: "Annotate & review",
+        description:
+          "Apply the guidelines and resolve uncertain examples during review.",
+      },
+      {
+        title: "Export data",
+        description:
+          "Validate label structure and package files for your pipeline.",
+      },
     ],
     inquiry:
       "Tell us about your data format, annotation schema, tools, and expected volume.",
@@ -259,16 +316,35 @@ const groups = [
   },
   {
     id: "generative-ai-services",
+    overviewTitle: "Human insight for better model responses.",
+    overviewDescription:
+      "Build examples around real tasks, then review them against the behavior, tone, and quality you want.",
     label: "Generative AI Services",
     description:
       "Develop prompt and response examples with human insight, practical rubrics, and consistent checks for quality and usefulness.",
     image: "/images/services/video-data.png",
     alt: "A person recording a smartphone response in a low-lit setting",
     workflow: [
-      "Set the goal",
-      "Write examples",
-      "Review responses",
-      "Refine the set",
+      {
+        title: "Set the goal",
+        description:
+          "Define target tasks, model behavior, and the review rubric.",
+      },
+      {
+        title: "Write examples",
+        description:
+          "Develop realistic prompts and reference responses for each task.",
+      },
+      {
+        title: "Review responses",
+        description:
+          "Check usefulness, consistency, and alignment with your guidance.",
+      },
+      {
+        title: "Refine the set",
+        description:
+          "Resolve feedback, remove duplicates, and validate the final format.",
+      },
     ],
     inquiry:
       "Share your use case, model behavior goals, response format, and review criteria.",
@@ -301,16 +377,35 @@ const groups = [
   },
   {
     id: "translation",
+    overviewTitle: "Meaning that travels across languages.",
+    overviewDescription:
+      "Make your content clear and natural for its audience, with terminology and context carried through every version.",
     label: "Translation",
     description:
       "Carry meaning across Indian languages with attention to context, terminology, and the way people naturally speak and read.",
     image: "/images/services/translation-english-hindi.png",
     alt: "A man translating English text into Hindi on a laptop",
     workflow: [
-      "Set the brief",
-      "Build language guidance",
-      "Translate & review",
-      "Deliver files",
+      {
+        title: "Set the brief",
+        description:
+          "Confirm source and target languages, audience, and content format.",
+      },
+      {
+        title: "Build language guidance",
+        description:
+          "Align the glossary, tone, and language-specific style rules.",
+      },
+      {
+        title: "Translate & review",
+        description:
+          "Translate in context and check meaning through bilingual review.",
+      },
+      {
+        title: "Deliver files",
+        description:
+          "Resolve review feedback and return the agreed file formats.",
+      },
     ],
     inquiry:
       "Tell us your source and target languages, content type, audience, and style needs.",
@@ -332,15 +427,3 @@ const groups = [
 ] as const
 
 export const serviceGroups = groups
-
-export const servicePages = serviceGroups.flatMap((group) =>
-  group.services.map((service) => ({
-    ...service,
-    category: group.label,
-    groupId: group.id,
-    image: group.image,
-    alt: group.alt,
-    workflow: group.workflow,
-    inquiry: group.inquiry,
-  }))
-)
