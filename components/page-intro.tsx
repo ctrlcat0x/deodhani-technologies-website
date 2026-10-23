@@ -9,6 +9,7 @@ export function PageIntro({
   image,
   alt,
   caption,
+  imageAspectClassName = "aspect-[16/10] sm:aspect-[2.15/1]",
 }: {
   label: string
   title: string
@@ -16,6 +17,7 @@ export function PageIntro({
   image?: string
   alt?: string
   caption?: string
+  imageAspectClassName?: string
 }) {
   return (
     <section className="mx-auto max-w-[1400px] px-5 pt-6 pb-12 sm:px-10 lg:px-16 lg:pb-16">
@@ -46,7 +48,9 @@ export function PageIntro({
       </div>
       {image && (
         <TextReveal as="figure" delay={0.12} className="mt-10 sm:mt-14">
-          <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-muted sm:aspect-[2.15/1]">
+          <div
+            className={`relative ${imageAspectClassName} overflow-hidden rounded-2xl bg-muted`}
+          >
             <Image
               src={image}
               alt={alt ?? ""}

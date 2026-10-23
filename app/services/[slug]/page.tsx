@@ -51,7 +51,9 @@ export default async function ServicePage({
               ? "/images/services/transcription-hero.png"
               : slug === "image-annotation"
                 ? "/images/services/annotation-hero.png"
-                : group.image
+                : slug === "multilingual-indian-language-translation"
+                  ? "/images/services/translation-hero.png"
+                  : group.image
         }
         alt={
           slug === "human-data-collection"
@@ -60,7 +62,14 @@ export default async function ServicePage({
               ? "A hand writing the word transcription in a notebook"
               : slug === "image-annotation"
                 ? "Pedestrians, cars, a dog, and traffic lights marked with detection boxes"
-                : group.alt
+                : slug === "multilingual-indian-language-translation"
+                  ? "A phone displays translations for greetings in several languages"
+                  : group.alt
+        }
+        imageAspectClassName={
+          slug === "multilingual-indian-language-translation"
+            ? "aspect-[735/449]"
+            : undefined
         }
         caption={`${group.label}, shaped around your data and delivery needs.`}
       />
