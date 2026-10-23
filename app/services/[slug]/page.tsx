@@ -44,8 +44,16 @@ export default async function ServicePage({
         label={group.label}
         title={service.title}
         description={service.description}
-        image={group.image}
-        alt={group.alt}
+        image={
+          slug === "human-data-collection"
+            ? "/images/services/data-collection-notes.png"
+            : group.image
+        }
+        alt={
+          slug === "human-data-collection"
+            ? "A wall covered with handwritten notes and sketches"
+            : group.alt
+        }
         caption={`${group.label}, shaped around your data and delivery needs.`}
       />
       <div className="mx-auto max-w-[1400px] px-5 sm:px-10 lg:px-16">
