@@ -53,6 +53,8 @@ export default async function ServicePage({
                 ? "/images/services/annotation-hero.png"
                 : slug === "multilingual-indian-language-translation"
                   ? "/images/services/translation-hero.png"
+                  : slug === "prompt-creation-and-response"
+                    ? "/images/services/generative-ai-hero.png"
                   : group.image
         }
         alt={
@@ -64,12 +66,16 @@ export default async function ServicePage({
                 ? "Pedestrians, cars, a dog, and traffic lights marked with detection boxes"
                 : slug === "multilingual-indian-language-translation"
                   ? "A phone displays translations for greetings in several languages"
+                  : slug === "prompt-creation-and-response"
+                    ? "A metallic hand holding a glowing, wire-wrapped brain"
                   : group.alt
         }
         imageAspectClassName={
           slug === "multilingual-indian-language-translation"
             ? "aspect-[735/449]"
-            : undefined
+            : slug === "prompt-creation-and-response"
+              ? "aspect-[4/3]"
+              : undefined
         }
         caption={`${group.label}, shaped around your data and delivery needs.`}
       />
