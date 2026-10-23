@@ -47,11 +47,15 @@ export default async function ServicePage({
         image={
           slug === "human-data-collection"
             ? "/images/services/data-collection-notes.png"
+            : slug === "general-transcription"
+              ? "/images/services/transcription-hero.png"
             : group.image
         }
         alt={
           slug === "human-data-collection"
             ? "A wall covered with handwritten notes and sketches"
+            : slug === "general-transcription"
+              ? "A hand writing the word transcription in a notebook"
             : group.alt
         }
         caption={`${group.label}, shaped around your data and delivery needs.`}
