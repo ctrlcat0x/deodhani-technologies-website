@@ -6,7 +6,6 @@ import { TextReveal } from "@/components/text-reveal"
 import { FAQSection } from "@/components/faq-section"
 import { WorldMap } from "@/components/ui/world-map"
 import { serviceGroups } from "@/lib/service-pages"
-import { publicPageHref } from "@/lib/public-pages"
 
 const checks = [
   {
@@ -108,33 +107,17 @@ export function HomeSections() {
               <h3>{group.label}</h3>
               <p>{group.description}</p>
               <ul>
-                {group.services.slice(0, 2).map((service) => {
-                  const href = publicPageHref(`/services/${service.slug}`)
-                  return (
-                    <li key={service.slug}>
-                      {href ? (
-                        <Link href={href}>
-                          <span>
-                            <strong>{service.label}</strong>
-                            <small>{service.description}</small>
-                          </span>
-                          <IconArrowUpRight aria-hidden="true" />
-                        </Link>
-                      ) : (
-                        <span
-                          aria-disabled="true"
-                          className="service-link-disabled"
-                        >
-                          <span>
-                            <strong>{service.label}</strong>
-                            <small>{service.description}</small>
-                          </span>
-                          <IconArrowUpRight aria-hidden="true" />
-                        </span>
-                      )}
-                    </li>
-                  )
-                })}
+                {group.services.slice(0, 2).map((service) => (
+                  <li key={service.slug}>
+                    <Link href={`/services/${service.slug}`}>
+                      <span>
+                        <strong>{service.label}</strong>
+                        <small>{service.description}</small>
+                      </span>
+                      <IconArrowUpRight aria-hidden="true" />
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </TextReveal>
           ))}
@@ -153,7 +136,7 @@ export function HomeSections() {
                 Data review
               </TextReveal>
               <TextReveal as="h2" id="quality-title" className="home-heading">
-                How we provide <br/> quality data
+                How we provide <br /> quality data
               </TextReveal>
             </div>
             <TextReveal as="p" delay={0.12} className="home-lead mr-24">

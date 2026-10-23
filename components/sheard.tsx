@@ -1,6 +1,5 @@
 import type React from "react"
 import { cn } from "@/lib/utils"
-import { publicPageHref } from "@/lib/public-pages"
 export type LinkItemType = {
   label: string
   href: string
@@ -16,7 +15,6 @@ export function LinkItem({
   onClick,
   ...props
 }: React.ComponentProps<"a"> & LinkItemType) {
-  const pageHref = publicPageHref(href)
   return (
     <a
       className={cn(
@@ -24,11 +22,9 @@ export function LinkItem({
         className
       )}
       {...props}
-      href={pageHref}
+      href={href}
       role="link"
-      aria-disabled={!pageHref || undefined}
-      tabIndex={pageHref ? props.tabIndex : -1}
-      onClick={pageHref ? onClick : undefined}
+      onClick={onClick}
     >
       <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-accent text-primary [&_svg]:size-5">
         {icon}

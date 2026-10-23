@@ -9,7 +9,6 @@ import {
 } from "@tabler/icons-react"
 import { Logo } from "@/components/logo"
 import { buttonVariants } from "@/components/ui/button"
-import { publicPageHref } from "@/lib/public-pages"
 const groups = [
   {
     title: "Data products",
@@ -99,20 +98,15 @@ export function Footer() {
               >
                 {group.title}
               </TextReveal>
-              {group.links.map(([label, href]) => {
-                const pageHref = publicPageHref(href)
-                return (
-                  <a
-                    href={pageHref}
-                    aria-disabled={!pageHref || undefined}
-                    tabIndex={pageHref ? undefined : -1}
-                    key={label}
-                    className="text-sm leading-normal text-footer-link transition-colors hover:text-footer-accent hover:underline hover:underline-offset-4 motion-reduce:transition-none max-[700px]:text-xs"
-                  >
-                    {label}
-                  </a>
-                )
-              })}
+              {group.links.map(([label, href]) => (
+                <a
+                  href={href}
+                  key={label}
+                  className="text-sm leading-normal text-footer-link transition-colors hover:text-footer-accent hover:underline hover:underline-offset-4 motion-reduce:transition-none max-[700px]:text-xs"
+                >
+                  {label}
+                </a>
+              ))}
             </TextReveal>
           ))}
         </div>
