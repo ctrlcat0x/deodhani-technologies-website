@@ -49,21 +49,30 @@ export default async function ServicePage({
             ? "/images/services/data-collection-notes.png"
             : slug === "general-transcription"
               ? "/images/services/transcription-hero.png"
-            : group.image
+              : slug === "image-annotation"
+                ? "/images/services/annotation-hero.png"
+                : group.image
         }
         alt={
           slug === "human-data-collection"
             ? "A wall covered with handwritten notes and sketches"
             : slug === "general-transcription"
               ? "A hand writing the word transcription in a notebook"
-            : group.alt
+              : slug === "image-annotation"
+                ? "Pedestrians, cars, a dog, and traffic lights marked with detection boxes"
+                : group.alt
         }
         caption={`${group.label}, shaped around your data and delivery needs.`}
       />
       <div className="mx-auto max-w-[1400px] px-5 sm:px-10 lg:px-16">
-        <TextReveal as="section" className="border-t border-border py-14 sm:py-20">
+        <TextReveal
+          as="section"
+          className="border-t border-border py-14 sm:py-20"
+        >
           <div className="mb-8 max-w-2xl">
-            <p className="mb-4 text-sm font-medium text-primary">What we deliver</p>
+            <p className="mb-4 text-sm font-medium text-primary">
+              What we deliver
+            </p>
             <h2 className="text-3xl leading-tight font-medium tracking-[-0.035em] text-balance sm:text-4xl">
               {group.label}, shaped around your needs.
             </h2>
@@ -95,7 +104,10 @@ export default async function ServicePage({
                 </div>
                 <ul className="mt-5 grid gap-3">
                   {item.includes.map((detail) => (
-                    <li key={detail} className="flex gap-3 text-sm leading-relaxed">
+                    <li
+                      key={detail}
+                      className="flex gap-3 text-sm leading-relaxed"
+                    >
                       <IconCheck
                         className="mt-0.5 size-4 shrink-0 text-primary"
                         aria-hidden="true"
