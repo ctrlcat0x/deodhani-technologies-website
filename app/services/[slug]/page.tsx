@@ -73,9 +73,7 @@ export default async function ServicePage({
         imageAspectClassName={
           slug === "multilingual-indian-language-translation"
             ? "aspect-[735/449]"
-            : slug === "prompt-creation-and-response"
-              ? "aspect-[4/3]"
-              : undefined
+            : undefined
         }
         caption={`${group.label}, shaped around your data and delivery needs.`}
       />
