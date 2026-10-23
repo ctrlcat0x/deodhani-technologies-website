@@ -109,7 +109,9 @@ export function HomeSections() {
               <ul>
                 {group.services.slice(0, 2).map((service) => (
                   <li key={service.slug}>
-                    <Link href={`/services/${service.slug}`}>
+                    <Link
+                      href={`/services/${group.services[0].slug}#${service.slug}`}
+                    >
                       <span>
                         <strong>{service.label}</strong>
                         <small>{service.description}</small>
