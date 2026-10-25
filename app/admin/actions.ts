@@ -3,6 +3,7 @@
 import { randomUUID } from "node:crypto"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
+import { BlobError } from "@vercel/blob"
 import {
   adminConfigurationError,
   clearAdminSession,
@@ -90,6 +91,8 @@ export async function removeOpening(
 }
 
 function actionError(error: unknown) {
+  if (error instanceof BlobError)
+    return "Unable to save openings. Check the careers Blob connection, then reload and try again."
   if (error instanceof Error && !("code" in error)) return error.message
-  return "Unable to save openings. Check the server's file permissions and persistent storage, then try again."
+  return "Unable to save openings. Check the server storage configuration, then try again."
 }

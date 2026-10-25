@@ -4,7 +4,7 @@ import { connection } from "next/server"
 import { IconBriefcase, IconLock } from "@tabler/icons-react"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { adminConfigurationError, hasAdminSession } from "@/lib/admin-auth"
-import { employmentTypes, readOpenings } from "@/lib/openings"
+import { employmentTypes, hasBlobStorage, readOpenings } from "@/lib/openings"
 import { AdminLogin, OpeningEditor, RemoveOpening } from "./forms"
 import { signOut } from "./actions"
 
@@ -108,9 +108,9 @@ export default async function AdminPage() {
         </section>
       </div>
       <p className="admin-storage-note">
-        Openings are stored on this server. Keep the data file on persistent
-        disk outside deployment releases, run one Node instance, and include it
-        in server backups.
+        {hasBlobStorage()
+          ? "Openings are saved securely in Vercel Blob and remain available across deployments."
+          : "Openings are stored locally. Use persistent disk and include the data file in server backups."}
       </p>
     </section>
   )

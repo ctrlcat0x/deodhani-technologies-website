@@ -2,6 +2,7 @@ import "server-only"
 import { mkdir, readFile, rename, rm, writeFile } from "node:fs/promises"
 import { dirname, resolve } from "node:path"
 import { randomUUID } from "node:crypto"
+import { BlobPreconditionFailedError, get, put } from "@vercel/blob"
 
 export const employmentTypes = [
   "Full-time",
@@ -22,6 +23,18 @@ export type Opening = {
 }
 
 type OpeningsFile = { revision: string; openings: Opening[] }
+
+export const hasBlobStorage = () =>
+  Boolean(process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID)
+
+// Preview deployments use separate content so testing cannot change live openings.
+const blobPath = () =>
+  process.env.VERCEL_ENV === "preview"
+    ? "careers/openings-preview.json"
+    : "careers/openings.json"
+
+const conflictMessage =
+  "Openings changed in another tab. Reload this page before saving again."
 
 const filePath = () =>
   resolve(
@@ -70,6 +83,16 @@ function isOpening(value: unknown): value is Opening {
 }
 
 export async function readOpenings(): Promise<OpeningsFile> {
+  if (hasBlobStorage()) {
+    const result = await get(blobPath(), { access: "private", useCache: false })
+    if (!result) return { revision: "initial", openings: [] }
+    if (result.statusCode !== 200 || !result.blob.etag)
+      throw new Error("Unable to read the current openings. Try again.")
+    const data = validateOpenings(await new Response(result.stream).text())
+    return { ...data, revision: result.blob.etag }
+  }
+  if (process.env.VERCEL)
+    throw new Error("Configure Vercel Blob storage before loading openings.")
   let raw: string
   try {
     raw = await readFile(/* turbopackIgnore: true */ filePath(), "utf8")
@@ -78,6 +101,10 @@ export async function readOpenings(): Promise<OpeningsFile> {
       return { revision: "initial", openings: [] }
     throw error
   }
+  return validateOpenings(raw)
+}
+
+function validateOpenings(raw: string): OpeningsFile {
   const data = JSON.parse(raw) as OpeningsFile
   if (
     !data ||
@@ -88,7 +115,7 @@ export async function readOpenings(): Promise<OpeningsFile> {
     new Set(data.openings.map((item) => item.id)).size !== data.openings.length
   ) {
     throw new Error(
-      "The openings file is invalid. Restore its backup before editing."
+      "The openings data is invalid. Restore a valid backup before editing."
     )
   }
   return data
@@ -130,6 +157,27 @@ export async function updateOpenings(
   revision: string,
   change: (openings: Opening[]) => Opening[]
 ) {
+  if (hasBlobStorage()) {
+    const current = await readOpenings()
+    if (current.revision !== revision) throw new Error(conflictMessage)
+    const openings = change(current.openings)
+    const data = JSON.stringify({ revision: randomUUID(), openings }, null, 2)
+    validateOpenings(data)
+    try {
+      await put(blobPath(), data, {
+        access: "private",
+        contentType: "application/json",
+        addRandomSuffix: false,
+        allowOverwrite: revision !== "initial",
+        ...(revision !== "initial" ? { ifMatch: revision } : {}),
+      })
+    } catch (error) {
+      if (error instanceof BlobPreconditionFailedError)
+        throw new Error(conflictMessage)
+      throw error
+    }
+    return
+  }
   if (process.env.VERCEL)
     throw new Error(
       "File editing requires a Node server with persistent disk. Vercel needs a durable storage service."

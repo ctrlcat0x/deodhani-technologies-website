@@ -6,19 +6,20 @@ import {
   timingSafeEqual,
 } from "node:crypto"
 import { cookies } from "next/headers"
+import { hasBlobStorage } from "@/lib/openings"
 
 const cookieName = "deodhani-admin"
 const sessionSeconds = 8 * 60 * 60
 
 export function adminConfigurationError() {
-  if (process.env.VERCEL)
-    return "This file-based dashboard needs a Node server with persistent disk. Vercel requires durable external storage."
+  if (process.env.VERCEL && !hasBlobStorage())
+    return "Connect the private careers Blob store to this Vercel project before editing openings."
   if (
     !process.env.ADMIN_USERNAME ||
     (process.env.ADMIN_PASSWORD?.length ?? 0) < 16 ||
     (process.env.ADMIN_SESSION_SECRET?.length ?? 0) < 32
   ) {
-    return "Configure ADMIN_USERNAME, ADMIN_PASSWORD (at least 16 characters), and ADMIN_SESSION_SECRET (at least 32 characters) on the server. Set OPENINGS_FILE to a persistent file path outside deployment releases."
+    return "Configure ADMIN_USERNAME, ADMIN_PASSWORD (at least 16 characters), and ADMIN_SESSION_SECRET (at least 32 characters) on the server."
   }
   return null
 }
@@ -40,7 +41,7 @@ function signature(payload: string) {
     .digest("base64url")
 }
 
-// ponytail: login throttling is local to one Node process, matching the file store.
+// ponytail: per-instance throttling only; use platform firewall limits for distributed protection.
 let attempts = { count: 0, resetAt: 0 }
 
 export function verifyCredentials(username: string, password: string) {
