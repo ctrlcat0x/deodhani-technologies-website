@@ -95,16 +95,22 @@ export function HomeSections() {
               key={group.id}
               className="expertise-item"
             >
-              <div className="expertise-image">
-                <Image
-                  src={group.image}
-                  alt={group.alt}
-                  fill
-                  sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 30vw"
-                  className="object-cover"
-                />
-              </div>
-              <h3>{group.label}</h3>
+              <Link
+                href={`/services/${group.services[0].slug}`}
+                aria-label={group.label}
+                className="group block rounded-2xl"
+              >
+                <div className="expertise-image">
+                  <Image
+                    src={group.image}
+                    alt={group.alt}
+                    fill
+                    sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 30vw"
+                    className="object-cover"
+                  />
+                </div>
+                <h3 className="group-hover:text-primary">{group.label}</h3>
+              </Link>
               <p>{group.description}</p>
               <ul>
                 {group.services.slice(0, 2).map((service) => (

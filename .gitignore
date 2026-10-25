@@ -40,3 +40,6 @@ next-env.d.ts
 
 # Local visual review artifacts
 /contact-preview.png
+
+# Openings edited through the admin dashboard (persistent server data)
+/.data/

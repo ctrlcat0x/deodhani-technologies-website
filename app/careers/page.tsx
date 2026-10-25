@@ -2,6 +2,10 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import {
   IconArrowDown,
+  IconArrowRight,
+  IconClock,
+  IconMapPin,
+  IconMail,
   IconBulb,
   IconUsers,
   IconTarget,
@@ -10,6 +14,9 @@ import { PageIntro } from "@/components/page-intro"
 import { ApplicationForm } from "@/components/application-form"
 import { buttonVariants } from "@/components/ui/button"
 import { TextReveal } from "@/components/text-reveal"
+import { connection } from "next/server"
+import { readOpenings } from "@/lib/openings"
+import { company } from "@/lib/company"
 
 export const metadata: Metadata = {
   title: "Careers | Deodhani Technologies",
@@ -17,18 +24,20 @@ export const metadata: Metadata = {
     "Explore a career in human-powered AI data. Introduce your skills in annotation, language, quality review, or project delivery.",
 }
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  await connection()
+  const { openings } = await readOpenings()
   return (
     <>
       <PageIntro
         label="Careers"
-        title="Your perspective can make AI better."
-        description="Bring your attention to detail, language skills, and curiosity to work that connects human understanding with intelligent systems."
+        title="Careers"
+        description="Your perspective can make AI better."
         image="/images/sourcing/language.jpg"
         alt="People collaborating around a table"
         caption="Different perspectives make better work. Illustrative photography; not a Deodhani team portrait."
       />
-      <section className="mx-auto max-w-[1400px] px-5 pb-16 sm:px-10 sm:pb-24 lg:px-16">
+      <section className="mx-auto max-w-[1400px] px-5 sm:px-10 lg:px-16">
         <div className="grid gap-8 border-y py-10 md:grid-cols-3">
           {[
             {
@@ -62,44 +71,86 @@ export default function CareersPage() {
         </div>
         <section
           aria-labelledby="opportunities-title"
-          className="grid gap-8 py-16 lg:grid-cols-2 lg:gap-16"
+          className="openings-section"
         >
-          <TextReveal as="div">
+          <div className="openings-intro">
             <h2
               id="opportunities-title"
               className="text-3xl font-medium tracking-tight sm:text-4xl"
             >
-              Find your place in the work.
+              Current openings
             </h2>
             <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground">
-              We’re interested in the people behind the skills. Introduce
-              yourself for future opportunities in data annotation, language
-              services, quality review, and project operations.
+              Bring your skills to human-powered AI. Explore opportunities in
+              data, language, and project delivery with Deodhani.
             </p>
-            <Link
-              href="#application"
-              className={buttonVariants({ size: "cta", className: "mt-7" })}
-            >
-              Send an open application
-              <IconArrowDown data-icon="inline-end" aria-hidden="true" />
-            </Link>
-          </TextReveal>
-          <TextReveal
-            as="div"
-            delay={0.08}
-            className="rounded-xl border p-7 sm:p-9"
-          >
-            <h3 className="text-xl font-medium">Current opportunities</h3>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              No confirmed vacancies are listed here yet. You can send an open
-              application for consideration when a suitable role is available.
-            </p>
-            <p className="mt-5 border-t pt-5 text-sm leading-relaxed text-muted-foreground">
-              Include your area of interest, relevant experience, languages, and
-              availability. An application does not guarantee an interview or
-              placement.
-            </p>
-          </TextReveal>
+          </div>
+          {openings.length ? (
+            <div className="openings-grid">
+              {openings.map((opening) => (
+                <article className="opening-card" key={opening.id}>
+                  <div className="opening-card-top">
+                    <span className="opening-icon">
+                      <IconClock aria-hidden="true" />
+                    </span>
+                    <span className="opening-type">{opening.type}</span>
+                  </div>
+                  <h3>{opening.title}</h3>
+                  <p className="opening-location">
+                    <IconMapPin aria-hidden="true" />
+                    {opening.location}
+                  </p>
+                  <p className="opening-description">{opening.description}</p>
+                  <ul className="opening-skills" aria-label="Skills">
+                    {opening.skills.map((skill) => (
+                      <li key={skill}>{skill}</li>
+                    ))}
+                  </ul>
+                  <div className="opening-actions">
+                    <a
+                      href={opening.applyUrl ?? "#application"}
+                      target="_blank"
+                      className={buttonVariants({ size: "default" })}
+                    >
+                      Apply now
+                      <IconArrowRight
+                        data-icon="inline-end"
+                        aria-hidden="true"
+                      />
+                    </a>
+                    <a
+                      href={`mailto:${company.email}?subject=${encodeURIComponent(`Career inquiry: ${opening.title}`)}`}
+                      className={buttonVariants({
+                        variant: "outline",
+                        size: "default",
+                      })}
+                    >
+                      Get in touch
+                      <IconMail data-icon="inline-end" aria-hidden="true" />
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="openings-empty">
+              <span className="opening-icon">
+                <IconUsers aria-hidden="true" />
+              </span>
+              <h3>No openings at the moment.</h3>
+              <p>
+                We still welcome introductions. Share your skills, experience,
+                and availability for future opportunities.
+              </p>
+              <Link
+                href="#application"
+                className={buttonVariants({ size: "cta" })}
+              >
+                Send an open application
+                <IconArrowDown data-icon="inline-end" aria-hidden="true" />
+              </Link>
+            </div>
+          )}
         </section>
         <section
           id="application"

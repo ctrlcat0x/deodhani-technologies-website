@@ -17,8 +17,8 @@ export default function VendorPage() {
     <>
       <PageIntro
         label="Become a vendor"
-        title="Bring your expertise. Build with us."
-        description="For contributors, language specialists, and partner teams. Tell us how you can support thoughtful, well-organized AI data work."
+        title="Become a vendor"
+        description="Bring your expertise. Build with us."
       />
       <div className="mx-auto max-w-[1400px] px-5 sm:px-10 lg:px-16">
         <section
@@ -110,7 +110,7 @@ export default function VendorPage() {
         <section
           id="registration"
           aria-label="Vendor introduction"
-          className="grid items-start gap-10 border-t pt-12 pb-16 sm:pb-24 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16"
+          className="grid items-start gap-10 border-t pt-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16"
         >
           <TextReveal as="div">
             <h2 className="text-3xl font-medium tracking-tight">

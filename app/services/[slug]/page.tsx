@@ -41,11 +41,11 @@ export default async function ServicePage({
     <>
       <PageIntro
         label={group.label}
-        title={service.title}
-        description={service.description}
+        title={group.label}
+        description={service.title}
         image={
           slug === "human-data-collection"
-            ? "/images/services/data-collection-notes.png"
+            ? "/images/services/data-collection-phone.png"
             : slug === "general-transcription"
               ? "/images/services/transcription-hero.png"
               : slug === "image-annotation"
@@ -53,12 +53,12 @@ export default async function ServicePage({
                 : slug === "multilingual-indian-language-translation"
                   ? "/images/services/translation-hero.png"
                   : slug === "prompt-creation-and-response"
-                    ? "/images/services/generative-ai-hero.png"
+                    ? "/images/services/generative-ai-hero-labeled.png"
                     : group.image
         }
         alt={
           slug === "human-data-collection"
-            ? "A wall covered with handwritten notes and sketches"
+            ? "A data collector photographs produce and a package with a smartphone at an Indian market"
             : slug === "general-transcription"
               ? "A hand writing the word transcription in a notebook"
               : slug === "image-annotation"
@@ -66,13 +66,15 @@ export default async function ServicePage({
                 : slug === "multilingual-indian-language-translation"
                   ? "A phone displays translations for greetings in several languages"
                   : slug === "prompt-creation-and-response"
-                    ? "A metallic hand holding a glowing, wire-wrapped brain"
+                    ? "Gen AI, Prompts, Training Data, LLMs, Responses, and Human Feedback surround a robotic hand and glowing brain"
                     : group.alt
         }
         imageAspectClassName={
           slug === "multilingual-indian-language-translation"
             ? "aspect-[735/449]"
-            : undefined
+            : slug === "prompt-creation-and-response"
+              ? "aspect-[1839/855]"
+              : undefined
         }
         caption={`${group.label}, shaped around your data and delivery needs.`}
       />
