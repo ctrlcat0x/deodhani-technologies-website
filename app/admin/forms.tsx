@@ -57,10 +57,12 @@ export function OpeningEditor({
   opening,
   revision,
   types,
+  onSuccess,
 }: {
   opening?: Opening
   revision: string
   types: readonly string[]
+  onSuccess?: () => void
 }) {
   const initialValues = {
     title: opening?.title ?? "",
@@ -74,7 +76,10 @@ export function OpeningEditor({
   const [state, action, pending] = useActionState(
     async (previous: ActionState, form: FormData) => {
       const result = await saveOpening(previous, form)
-      if (result.success && !opening) setValues(initialValues)
+      if (result.success) {
+        if (!opening) setValues(initialValues)
+        onSuccess?.()
+      }
       return result
     },
     {}
@@ -187,23 +192,29 @@ export function OpeningEditor({
 export function RemoveOpening({
   opening,
   revision,
+  onSuccess,
 }: {
   opening: Opening
   revision: string
+  onSuccess?: () => void
 }) {
-  const [state, action, pending] = useActionState(removeOpening, {})
+  const [state, action, pending] = useActionState(
+    async (previous: ActionState, form: FormData) => {
+      const result = await removeOpening(previous, form)
+      if (result.success) onSuccess?.()
+      return result
+    },
+    {}
+  )
   return (
-    <details className="admin-remove">
-      <summary>Remove opening</summary>
-      <form action={action}>
-        <input type="hidden" name="id" value={opening.id} />
-        <input type="hidden" name="revision" value={revision} />
-        <p>Remove “{opening.title}” from the careers page?</p>
-        <Feedback state={state} />
-        <Button type="submit" variant="destructive" disabled={pending}>
-          {pending ? "Removing…" : "Confirm removal"}
-        </Button>
-      </form>
-    </details>
+    <form action={action} className="admin-form">
+      <input type="hidden" name="id" value={opening.id} />
+      <input type="hidden" name="revision" value={revision} />
+      <p>Remove “{opening.title}” from the careers page?</p>
+      <Feedback state={state} />
+      <Button type="submit" variant="destructive" disabled={pending}>
+        {pending ? "Removing…" : "Remove opening"}
+      </Button>
+    </form>
   )
 }
