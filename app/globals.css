@@ -732,24 +732,6 @@ header {
 .admin-dialog-content .admin-form-row select {
   min-height: 44px;
 }
-.admin-signout {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 8px;
-  margin-top: 16px;
-}
-.admin-signout-button {
-  min-height: 32px;
-  padding-inline: 10px;
-  border-radius: 6px;
-  color: var(--muted-foreground);
-  font-size: 13px;
-}
-.admin-signout-button:hover {
-  background: var(--secondary);
-  color: var(--foreground);
-}
 @media (max-width: 1100px) {
   .openings-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

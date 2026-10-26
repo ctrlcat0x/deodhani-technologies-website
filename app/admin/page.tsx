@@ -2,12 +2,10 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { connection } from "next/server"
 import { IconLock } from "@tabler/icons-react"
-import { buttonVariants } from "@/components/ui/button"
 import { adminConfigurationError, hasAdminSession } from "@/lib/admin-auth"
 import { employmentTypes, hasBlobStorage, readOpenings } from "@/lib/openings"
 import { AdminLogin } from "./forms"
 import { OpeningsManager } from "./management"
-import { signOut } from "./actions"
 
 export const runtime = "nodejs"
 export const metadata: Metadata = {
@@ -56,19 +54,6 @@ export default async function AdminPage() {
           ? "Openings are saved securely in Vercel Blob and remain available across deployments."
           : "Openings are stored locally. Use persistent disk and include the data file in server backups."}
       </p>
-      <div className="admin-signout">
-        <Link
-          href="/careers#opportunities-title"
-          className={buttonVariants({ variant: "link", size: "sm" })}
-        >
-          View careers page
-        </Link>
-        <form action={signOut}>
-          <button type="submit" className="admin-signout-button">
-            Sign out
-          </button>
-        </form>
-      </div>
     </section>
   )
 }
