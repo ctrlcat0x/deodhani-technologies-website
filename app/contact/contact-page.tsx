@@ -6,7 +6,7 @@ import {
   IconPhone,
   IconBriefcase,
 } from "@tabler/icons-react"
-import { Testimonials } from "@/components/testimonials"
+// import { Testimonials } from "@/components/testimonials"
 import { ContactForm } from "@/components/contact-form"
 import { TextReveal } from "@/components/text-reveal"
 import { company } from "@/lib/company"
@@ -146,7 +146,7 @@ export default function ContactPage() {
         </div>
         <ContactForm />
       </section>
-      <Testimonials />
+      {/* <Testimonials /> */}
     </>
   )
 }

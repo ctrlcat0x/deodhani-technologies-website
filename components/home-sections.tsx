@@ -1,4 +1,4 @@
-import { Testimonials } from "@/components/testimonials"
+// import { Testimonials } from "@/components/testimonials"
 import Image from "next/image"
 import Link from "next/link"
 import { IconArrowUpRight, IconCheck } from "@tabler/icons-react"
@@ -191,7 +191,7 @@ export function HomeSections() {
         </div>
       </section>
 
-      <Testimonials />
+      {/* <Testimonials /> */}
 
       <FAQSection />
 
